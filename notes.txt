@@ -22,6 +22,9 @@ Idea: hook to pause calling process while sending message
 
 In xpc handler hook in daemons, use coresymbolication on client, or call method exported by raw mach? to get call stack as collected by caller hook
 
+Push call stack to… the stack (!!!) in the client process on the hook to be retrieved by thread get state and vm read from service hook
+
+
 
 
 asm(".linker_option \"-lFoundation\"");
