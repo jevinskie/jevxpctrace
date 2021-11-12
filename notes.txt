@@ -22,3 +22,30 @@ Idea: hook to pause calling process while sending message
 
 In xpc handler hook in daemons, use coresymbolication on client, or call method exported by raw mach? to get call stack as collected by caller hook
 
+
+
+
+
+
+
+
+
+(lldb) bt
+* thread #2, queue = 'com.apple.NSXPCConnection.user.anonymous.52675', stop reason = breakpoint 1.1
+  * frame #0: 0x0000000100aebb50 jevxpctrace-test-service`-[jevxpctrace_test_service upperCaseString:withReply:](self=0x0000600002b30030, _cmd="upperCaseString:withReply:", aString=@"hello", reply=0x000000019996fdf0) at jevxpctrace_test_service.m:15:5
+    frame #1: 0x00000001996e54a0 Foundation`__NSXPCCONNECTION_IS_CALLING_OUT_TO_EXPORTED_OBJECT_S2__ + 16
+    frame #2: 0x00000001996e4448 Foundation`-[NSXPCConnection _decodeAndInvokeMessageWithEvent:flags:] + 1804
+    frame #3: 0x0000000199698d10 Foundation`message_handler + 228
+    frame #4: 0x000000019848c1d8 libxpc.dylib`_xpc_connection_call_event_handler + 176
+    frame #5: 0x000000019848abf8 libxpc.dylib`_xpc_connection_mach_event + 1368
+    frame #6: 0x0000000101061de4 libdispatch.dylib`_dispatch_client_callout4 + 20
+    frame #7: 0x00000001010859f0 libdispatch.dylib`_dispatch_mach_msg_invoke + 532
+    frame #8: 0x000000010106afa8 libdispatch.dylib`_dispatch_lane_serial_drain + 376
+    frame #9: 0x000000010108718c libdispatch.dylib`_dispatch_mach_invoke + 508
+    frame #10: 0x000000010106afa8 libdispatch.dylib`_dispatch_lane_serial_drain + 376
+    frame #11: 0x000000010106c2b4 libdispatch.dylib`_dispatch_lane_invoke + 492
+    frame #12: 0x000000010107bb40 libdispatch.dylib`_dispatch_workloop_worker_thread + 1240
+    frame #13: 0x0000000100c08104 libsystem_pthread.dylib`_pthread_wqthread + 288
+Printing description of $x19:
+<OS_xpc_connection: connection[0x11f704080]: { refcnt = 2, xrefcnt = 5, name = vin.je.jevxpctrace-test-service.peer.0x11f704080, type = peer, state = checked in, cancelation = (0, <none>), mach = false, privileged = false, bssend = 0x0, recv = 0x1703, send = 0x2803, pid = 52675, euid = 501, egid = 20, asid = 100005, channel: <OS_dispatch_mach: vin.je.jevxpctrace-test-service.peer.0x11f704080[0x600001b3c120] = { xref = 1, ref = 4, target = com.apple.NSXPCConnection.user.anonymous.52675[0x600000738300], receive = 0x1703, send = 0x2803, send-possible = 0x0, checkin = 0x0, send state = 0000000000000000, disconnected = 0, canceled = 0 }> } <connection: 0x11f704080> { name = vin.je.jevxpctrace-test-service.peer.0x11f704080, listener = false, pid = 52675, euid = 501, egid = 20, asid = 100005 }>
+
