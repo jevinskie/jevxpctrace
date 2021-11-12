@@ -24,7 +24,11 @@ In xpc handler hook in daemons, use coresymbolication on client, or call method 
 
 
 
+asm(".linker_option \"-lFoundation\"");
 
+asm(".linker_option \"-Wl,-U,_OBJC_CLASS_$_NSXPCDecoder\"");
+
+^ weak class that gets fixed up by ctor to point to non-exported real class using coresymbolication
 
 
 

@@ -57,6 +57,7 @@
 		09FB9D8B273EE86300D65871 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		09FB9D8D273EE86300D65871 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		09FB9D8F273EE86300D65871 /* jevxpctrace_test_client.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = jevxpctrace_test_client.entitlements; sourceTree = "<group>"; };
+		09FB9D98273F04A000D65871 /* CaptainHook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaptainHook.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +81,7 @@
 		09FB9D37273EE56700D65871 = {
 			isa = PBXGroup;
 			children = (
+				09FB9D98273F04A000D65871 /* CaptainHook.h */,
 				09FB9D81273EE86300D65871 /* jevxpctrace-test-client */,
 				09FB9D5A273EE62100D65871 /* jevxpctrace-test-service */,
 				09FB9D41273EE56700D65871 /* Products */,
