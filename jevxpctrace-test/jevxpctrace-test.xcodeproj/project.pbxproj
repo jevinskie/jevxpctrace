@@ -7,28 +7,67 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		09FB9D51273EE58600D65871 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 09FB9D50273EE58600D65871 /* main.m */; };
+		09FB9D5E273EE62100D65871 /* jevxpctrace_test_service.m in Sources */ = {isa = PBXBuildFile; fileRef = 09FB9D5D273EE62100D65871 /* jevxpctrace_test_service.m */; };
+		09FB9D60273EE62100D65871 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 09FB9D5F273EE62100D65871 /* main.m */; };
+		09FB9D84273EE86300D65871 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 09FB9D83273EE86300D65871 /* AppDelegate.m */; };
+		09FB9D87273EE86300D65871 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09FB9D86273EE86300D65871 /* ViewController.m */; };
+		09FB9D89273EE86300D65871 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 09FB9D88273EE86300D65871 /* Assets.xcassets */; };
+		09FB9D8C273EE86300D65871 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09FB9D8A273EE86300D65871 /* Main.storyboard */; };
+		09FB9D8E273EE86300D65871 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 09FB9D8D273EE86300D65871 /* main.m */; };
+		09FB9D94273EE8AC00D65871 /* jevxpctrace-test-service.xpc in Embed XPC Services */ = {isa = PBXBuildFile; fileRef = 09FB9D59273EE62100D65871 /* jevxpctrace-test-service.xpc */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		09FB9D95273EE8AC00D65871 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 09FB9D38273EE56700D65871 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 09FB9D58273EE62100D65871;
+			remoteInfo = "jevxpctrace-test-service";
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXCopyFilesBuildPhase section */
-		09FB9D4C273EE58600D65871 /* CopyFiles */ = {
+		09FB9D97273EE8AC00D65871 /* Embed XPC Services */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
-			dstPath = /usr/share/man/man1/;
-			dstSubfolderSpec = 0;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/XPCServices";
+			dstSubfolderSpec = 16;
 			files = (
+				09FB9D94273EE8AC00D65871 /* jevxpctrace-test-service.xpc in Embed XPC Services */,
 			);
-			runOnlyForDeploymentPostprocessing = 1;
+			name = "Embed XPC Services";
+			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		09FB9D4E273EE58600D65871 /* jevxpctrace-test-client */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "jevxpctrace-test-client"; sourceTree = BUILT_PRODUCTS_DIR; };
-		09FB9D50273EE58600D65871 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		09FB9D59273EE62100D65871 /* jevxpctrace-test-service.xpc */ = {isa = PBXFileReference; explicitFileType = "wrapper.xpc-service"; includeInIndex = 0; path = "jevxpctrace-test-service.xpc"; sourceTree = BUILT_PRODUCTS_DIR; };
+		09FB9D5B273EE62100D65871 /* jevxpctrace_test_serviceProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = jevxpctrace_test_serviceProtocol.h; sourceTree = "<group>"; };
+		09FB9D5C273EE62100D65871 /* jevxpctrace_test_service.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = jevxpctrace_test_service.h; sourceTree = "<group>"; };
+		09FB9D5D273EE62100D65871 /* jevxpctrace_test_service.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = jevxpctrace_test_service.m; sourceTree = "<group>"; };
+		09FB9D5F273EE62100D65871 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		09FB9D61273EE62100D65871 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		09FB9D80273EE86300D65871 /* jevxpctrace-test-client.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "jevxpctrace-test-client.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		09FB9D82273EE86300D65871 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		09FB9D83273EE86300D65871 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		09FB9D85273EE86300D65871 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		09FB9D86273EE86300D65871 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		09FB9D88273EE86300D65871 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		09FB9D8B273EE86300D65871 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		09FB9D8D273EE86300D65871 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		09FB9D8F273EE86300D65871 /* jevxpctrace_test_client.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = jevxpctrace_test_client.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		09FB9D4B273EE58600D65871 /* Frameworks */ = {
+		09FB9D56273EE62100D65871 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		09FB9D7D273EE86300D65871 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -41,46 +80,94 @@
 		09FB9D37273EE56700D65871 = {
 			isa = PBXGroup;
 			children = (
-				09FB9D4F273EE58600D65871 /* jevxpctrace-test-client */,
+				09FB9D81273EE86300D65871 /* jevxpctrace-test-client */,
+				09FB9D5A273EE62100D65871 /* jevxpctrace-test-service */,
 				09FB9D41273EE56700D65871 /* Products */,
+				09FB9D93273EE8AC00D65871 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
 		09FB9D41273EE56700D65871 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				09FB9D4E273EE58600D65871 /* jevxpctrace-test-client */,
+				09FB9D59273EE62100D65871 /* jevxpctrace-test-service.xpc */,
+				09FB9D80273EE86300D65871 /* jevxpctrace-test-client.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		09FB9D4F273EE58600D65871 /* jevxpctrace-test-client */ = {
+		09FB9D5A273EE62100D65871 /* jevxpctrace-test-service */ = {
 			isa = PBXGroup;
 			children = (
-				09FB9D50273EE58600D65871 /* main.m */,
+				09FB9D5B273EE62100D65871 /* jevxpctrace_test_serviceProtocol.h */,
+				09FB9D5C273EE62100D65871 /* jevxpctrace_test_service.h */,
+				09FB9D5D273EE62100D65871 /* jevxpctrace_test_service.m */,
+				09FB9D5F273EE62100D65871 /* main.m */,
+				09FB9D61273EE62100D65871 /* Info.plist */,
+			);
+			path = "jevxpctrace-test-service";
+			sourceTree = "<group>";
+		};
+		09FB9D81273EE86300D65871 /* jevxpctrace-test-client */ = {
+			isa = PBXGroup;
+			children = (
+				09FB9D82273EE86300D65871 /* AppDelegate.h */,
+				09FB9D83273EE86300D65871 /* AppDelegate.m */,
+				09FB9D85273EE86300D65871 /* ViewController.h */,
+				09FB9D86273EE86300D65871 /* ViewController.m */,
+				09FB9D88273EE86300D65871 /* Assets.xcassets */,
+				09FB9D8A273EE86300D65871 /* Main.storyboard */,
+				09FB9D8D273EE86300D65871 /* main.m */,
+				09FB9D8F273EE86300D65871 /* jevxpctrace_test_client.entitlements */,
 			);
 			path = "jevxpctrace-test-client";
+			sourceTree = "<group>";
+		};
+		09FB9D93273EE8AC00D65871 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		09FB9D4D273EE58600D65871 /* jevxpctrace-test-client */ = {
+		09FB9D58273EE62100D65871 /* jevxpctrace-test-service */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 09FB9D52273EE58600D65871 /* Build configuration list for PBXNativeTarget "jevxpctrace-test-client" */;
+			buildConfigurationList = 09FB9D62273EE62100D65871 /* Build configuration list for PBXNativeTarget "jevxpctrace-test-service" */;
 			buildPhases = (
-				09FB9D4A273EE58600D65871 /* Sources */,
-				09FB9D4B273EE58600D65871 /* Frameworks */,
-				09FB9D4C273EE58600D65871 /* CopyFiles */,
+				09FB9D55273EE62100D65871 /* Sources */,
+				09FB9D56273EE62100D65871 /* Frameworks */,
+				09FB9D57273EE62100D65871 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
+			name = "jevxpctrace-test-service";
+			productName = "jevxpctrace-test-service";
+			productReference = 09FB9D59273EE62100D65871 /* jevxpctrace-test-service.xpc */;
+			productType = "com.apple.product-type.xpc-service";
+		};
+		09FB9D7F273EE86300D65871 /* jevxpctrace-test-client */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 09FB9D92273EE86300D65871 /* Build configuration list for PBXNativeTarget "jevxpctrace-test-client" */;
+			buildPhases = (
+				09FB9D7C273EE86300D65871 /* Sources */,
+				09FB9D7D273EE86300D65871 /* Frameworks */,
+				09FB9D7E273EE86300D65871 /* Resources */,
+				09FB9D97273EE8AC00D65871 /* Embed XPC Services */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				09FB9D96273EE8AC00D65871 /* PBXTargetDependency */,
+			);
 			name = "jevxpctrace-test-client";
 			productName = "jevxpctrace-test-client";
-			productReference = 09FB9D4E273EE58600D65871 /* jevxpctrace-test-client */;
-			productType = "com.apple.product-type.tool";
+			productReference = 09FB9D80273EE86300D65871 /* jevxpctrace-test-client.app */;
+			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
@@ -91,7 +178,10 @@
 				BuildIndependentTargetsInParallel = 1;
 				LastUpgradeCheck = 1320;
 				TargetAttributes = {
-					09FB9D4D273EE58600D65871 = {
+					09FB9D58273EE62100D65871 = {
+						CreatedOnToolsVersion = 13.2;
+					};
+					09FB9D7F273EE86300D65871 = {
 						CreatedOnToolsVersion = 13.2;
 					};
 				};
@@ -109,21 +199,71 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				09FB9D4D273EE58600D65871 /* jevxpctrace-test-client */,
+				09FB9D7F273EE86300D65871 /* jevxpctrace-test-client */,
+				09FB9D58273EE62100D65871 /* jevxpctrace-test-service */,
 			);
 		};
 /* End PBXProject section */
 
+/* Begin PBXResourcesBuildPhase section */
+		09FB9D57273EE62100D65871 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		09FB9D7E273EE86300D65871 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				09FB9D89273EE86300D65871 /* Assets.xcassets in Resources */,
+				09FB9D8C273EE86300D65871 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
-		09FB9D4A273EE58600D65871 /* Sources */ = {
+		09FB9D55273EE62100D65871 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				09FB9D51273EE58600D65871 /* main.m in Sources */,
+				09FB9D60273EE62100D65871 /* main.m in Sources */,
+				09FB9D5E273EE62100D65871 /* jevxpctrace_test_service.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		09FB9D7C273EE86300D65871 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				09FB9D87273EE86300D65871 /* ViewController.m in Sources */,
+				09FB9D8E273EE86300D65871 /* main.m in Sources */,
+				09FB9D84273EE86300D65871 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		09FB9D96273EE8AC00D65871 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 09FB9D58273EE62100D65871 /* jevxpctrace-test-service */;
+			targetProxy = 09FB9D95273EE8AC00D65871 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		09FB9D8A273EE86300D65871 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				09FB9D8B273EE86300D65871 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		09FB9D45273EE56700D65871 /* Debug */ = {
@@ -237,23 +377,101 @@
 			};
 			name = Release;
 		};
-		09FB9D53273EE58600D65871 /* Debug */ = {
+		09FB9D63273EE62100D65871 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = ZK96P738ZR;
 				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "jevxpctrace-test-service/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "jevxpctrace-test-service";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "vin.je.jevxpctrace-test-service";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 			};
 			name = Debug;
 		};
-		09FB9D54273EE58600D65871 /* Release */ = {
+		09FB9D64273EE62100D65871 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = ZK96P738ZR;
 				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "jevxpctrace-test-service/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "jevxpctrace-test-service";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "vin.je.jevxpctrace-test-service";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+			};
+			name = Release;
+		};
+		09FB9D90273EE86300D65871 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "jevxpctrace-test-client/jevxpctrace_test_client.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = ZK96P738ZR;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSMainStoryboardFile = Main;
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "vin.je.jevxpctrace-test-client";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+			};
+			name = Debug;
+		};
+		09FB9D91273EE86300D65871 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "jevxpctrace-test-client/jevxpctrace_test_client.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = ZK96P738ZR;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSMainStoryboardFile = Main;
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "vin.je.jevxpctrace-test-client";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
 			};
 			name = Release;
 		};
@@ -269,11 +487,20 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		09FB9D52273EE58600D65871 /* Build configuration list for PBXNativeTarget "jevxpctrace-test-client" */ = {
+		09FB9D62273EE62100D65871 /* Build configuration list for PBXNativeTarget "jevxpctrace-test-service" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				09FB9D53273EE58600D65871 /* Debug */,
-				09FB9D54273EE58600D65871 /* Release */,
+				09FB9D63273EE62100D65871 /* Debug */,
+				09FB9D64273EE62100D65871 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		09FB9D92273EE86300D65871 /* Build configuration list for PBXNativeTarget "jevxpctrace-test-client" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				09FB9D90273EE86300D65871 /* Debug */,
+				09FB9D91273EE86300D65871 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

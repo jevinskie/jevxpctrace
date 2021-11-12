@@ -5,12 +5,11 @@
 //  Created by Jevin Sweval on 11/12/21.
 //
 
-#import <Foundation/Foundation.h>
+#import <Cocoa/Cocoa.h>
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
-        // insert code here...
-        NSLog(@"Hello, World!");
+        // Setup code that might create autoreleased objects goes here.
     }
-    return 0;
+    return NSApplicationMain(argc, argv);
 }
