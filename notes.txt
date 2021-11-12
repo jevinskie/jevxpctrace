@@ -1,0 +1,24 @@
+
+
+
+Idea:
+Frida xpc enumeration tweak
+
+Objective: find xpc endpoints accessible from App Store container
+
+Method:
+Use existing apps on JBen phone
+
+Inject into all apple processes a hook for processing incoming xpc call or maybe just the connection callback
+
+Check if the caller is our or any container.sb process
+
+If so set a flag for frida trace
+New flag to only print traces if xpc handler is in callstack (tls flag? Pthread set specific or context?)
+
+Exporting stack trace from calling process…
+
+Idea: hook to pause calling process while sending message
+
+In xpc handler hook in daemons, use coresymbolication on client, or call method exported by raw mach? to get call stack as collected by caller hook
+
