@@ -49,3 +49,27 @@ In xpc handler hook in daemons, use coresymbolication on client, or call method 
 Printing description of $x19:
 <OS_xpc_connection: connection[0x11f704080]: { refcnt = 2, xrefcnt = 5, name = vin.je.jevxpctrace-test-service.peer.0x11f704080, type = peer, state = checked in, cancelation = (0, <none>), mach = false, privileged = false, bssend = 0x0, recv = 0x1703, send = 0x2803, pid = 52675, euid = 501, egid = 20, asid = 100005, channel: <OS_dispatch_mach: vin.je.jevxpctrace-test-service.peer.0x11f704080[0x600001b3c120] = { xref = 1, ref = 4, target = com.apple.NSXPCConnection.user.anonymous.52675[0x600000738300], receive = 0x1703, send = 0x2803, send-possible = 0x0, checkin = 0x0, send state = 0000000000000000, disconnected = 0, canceled = 0 }> } <connection: 0x11f704080> { name = vin.je.jevxpctrace-test-service.peer.0x11f704080, listener = false, pid = 52675, euid = 501, egid = 20, asid = 100005 }>
 
+
+
+(lldb) bt
+* thread #1, queue = 'com.apple.main-thread', stop reason = breakpoint 7.1
+  * frame #0: 0x000000019848b85c libxpc.dylib`xpc_connection_send_message_with_reply
+    frame #1: 0x0000000199693bdc Foundation`-[NSXPCConnection _sendInvocation:orArguments:count:methodSignature:selector:withProxy:] + 2480
+    frame #2: 0x000000019969b090 Foundation`-[NSXPCConnection _sendSelector:withProxy:arg1:arg2:] + 144
+    frame #3: 0x000000019969afa8 Foundation`_NSXPCDistantObjectSimpleMessageSend2 + 76
+    frame #4: 0x0000000100f02e14 jevxpctrace-test-client`-[ViewController xpcTest](self=0x0000600002994480, _cmd="xpcTest") at ViewController.m:24:5
+    frame #5: 0x0000000100f02f74 jevxpctrace-test-client`-[ViewController viewDidLoad](self=0x0000600002994480, _cmd="viewDidLoad") at ViewController.m:35:5
+    frame #6: 0x000000019b3cb638 AppKit`-[NSViewController _sendViewDidLoad] + 100
+    frame #7: 0x000000019b3b3198 AppKit`-[NSViewController _loadViewIfRequired] + 304
+    frame #8: 0x000000019b3b3028 AppKit`-[NSViewController view] + 32
+    frame #9: 0x000000019b590b58 AppKit`-[NSWindow _contentViewControllerChanged] + 128
+    frame #10: 0x00000001996aafb0 Foundation`-[NSObject(NSKeyValueCoding) setValue:forKey:] + 360
+    frame #11: 0x000000019b5cbe7c AppKit`-[NSWindow setValue:forKey:] + 168
+    frame #12: 0x000000019b3f1ee8 AppKit`-[NSIBUserDefinedRuntimeAttributesConnector establishConnection] + 252
+    frame #13: 0x000000019b3358a8 AppKit`-[NSIBObjectData nibInstantiateWithOwner:options:topLevelObjects:] + 944
+    frame #14: 0x000000019b3b3ea4 AppKit`-[NSNib _instantiateNibWithExternalNameTable:options:] + 688
+    frame #15: 0x000000019b3b3b18 AppKit`-[NSNib _instantiateWithOwner:options:topLevelObjects:] + 160
+    frame #16: 0x000000019bb49ff0 AppKit`-[NSStoryboard _instantiateControllerWithIdentifier:creator:storyboardSegueTemplate:sender:] + 496
+    frame #17: 0x000000019b31a970 AppKit`NSApplicationMain + 748
+    frame #18: 0x0000000100f03020 jevxpctrace-test-client`main(argc=3, argv=0x000000016eefe210) at main.m:14:12
+    frame #19: 0x00000001010c50f4 dyld`start + 520

@@ -9,6 +9,8 @@
 
 #import <jevxpctrace-test-service/jevxpctrace_test_serviceProtocol.h>
 
+BOOL doBP;
+
 @implementation ViewController
 
 - (void)xpcTest {
@@ -16,12 +18,15 @@
     xpcConn.remoteObjectInterface = [NSXPCInterface interfaceWithProtocol:@protocol(jevxpctrace_test_serviceProtocol)];
     [xpcConn resume];
 
-    [[xpcConn remoteObjectProxy] upperCaseString:@"hello" withReply:^(NSString *aString) {
+    id proxy = xpcConn.remoteObjectProxy;
+
+    doBP = YES;
+    [proxy upperCaseString:@"hello" withReply:^(NSString *aString) {
         // We have received a response. Update our text field, but do it on the main thread.
         NSLog(@"Result string was: %@", aString);
         [xpcConn invalidate];
     }];
-
+    doBP = NO;
 }
 
 - (void)viewDidLoad {
