@@ -68,14 +68,19 @@ void putCallstackOnStack(void) {
     int num_frames = backtrace(bt_buf, sizeof(bt_buf) / sizeof(void*));
     assert(num_frames > 0);
 
-    CSSymbolicatorRef symbolicator = CSSymbolicatorCreateWithTask(mach_task_self());
-    assert(!CSIsNull(symbolicator));
+    CSSymbolicatorRef cs = CSSymbolicatorCreateWithTask(mach_task_self());
+    assert(!CSIsNull(cs));
 
     for (int ret_addr_idx = 0; ret_addr_idx < num_frames; ++ret_addr_idx) {
         void *ret_addr = bt_buf[ret_addr_idx];
-        CSSymbolRef sym = CSSymbolicatorGetSymbolWithAddressAtTime(symbolicator, (vm_address_t)ret_addr, kCSNow);
-        NSLog(@"symbol: %@", CSSymbolCopyDescriptionWithIndent(sym, 0));
-//        CSRange rng = CSSymbolGetRange(sym);
+        CSSymbolRef sym = CSSymbolicatorGetSymbolWithAddressAtTime(cs, (vm_address_t)ret_addr, kCSNow);
+//        CSSymbolRef sym = CSSourceInfoGetSymbol(info);
+        CSRange rng = CSSymbolGetRange(sym);
+        const char *sym_name = CSSymbolGetName(sym);
+        ptrdiff_t off = (uintptr_t)ret_addr - (uintptr_t)rng.location;
+
+
+        NSLog(@"symbol: %s %p off: 0x%tx", sym_name, (const void *)rng.location, off);
 //        gDyld_addr = rng.location;
     }
 
