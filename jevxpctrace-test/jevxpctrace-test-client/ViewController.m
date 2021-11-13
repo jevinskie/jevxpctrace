@@ -22,12 +22,19 @@ BOOL doBP;
 CHDeclareClass(NSXPCDecoder);
 
 @interface NSXPCDecoder : NSXPCCoder
-- (int)__decodeXPCObject:(xpc_object_t)root allowingSimpleMessageSend:(BOOL)allowSimpleMessageSend outInvocation:(NSInvocation **)invocation outArguments:(id *)arguments outArgumentsMaxCount:(NSUInteger)maxArgCount outMethodSignature:(NSMethodSignature **)outMethodSignature outSelector:(SEL *)outSelector isReply:(BOOL)isReply replySelector:(SEL)replySelector interface:(NSXPCInterface *)interface;
+- (int)__decodeXPCObject:(xpc_object_t)root
+    allowingSimpleMessageSend:(BOOL)allowSimpleMessageSend
+                outInvocation:(NSInvocation **)invocation
+                 outArguments:(id *)arguments
+         outArgumentsMaxCount:(NSUInteger)maxArgCount
+           outMethodSignature:(NSMethodSignature **)outMethodSignature
+                  outSelector:(SEL *)outSelector
+                      isReply:(BOOL)isReply
+                replySelector:(SEL)replySelector
+                    interface:(NSXPCInterface *)interface;
 @end
 
-CHConstructor {
-    CHLoadLateClass(NSXPCDecoder);
-}
+CHConstructor { CHLoadLateClass(NSXPCDecoder); }
 
 #define JEVTRACE_CS_HEADER 0x0d7029bau
 #define JEVTRACE_CS_FOOTER 0x2845443e
@@ -55,9 +62,7 @@ finish:
 }
 
 void putCallstackOnStack(void) {
-    NSLog(@"%s begin", __PRETTY_FUNCTION__);
-
-//    uint8_t buf[16*1024*8];
+    //    uint8_t buf[16*1024*8];
     uint8_t buf[32];
     memset(buf, 0, sizeof(buf));
 
@@ -66,33 +71,24 @@ void putCallstackOnStack(void) {
     *header_p = JEVTRACE_CS_HEADER;
     *footer_p = JEVTRACE_CS_FOOTER;
 
+    void *sp = NULL;
 
-    void *_sp_reg_copy = NULL;
-
-    __asm __volatile (
-                      "mov %[_sp_reg_copy_], sp \n\t"
-        : [_sp_reg_copy_] "=r" (_sp_reg_copy)                                     /* outputs */
+    __asm __volatile("mov %[_sp], sp\n\t"
+                     : [_sp] "=r"(sp) /* outputs */
     );
 
-
-//    void *_sp = __builtin_frame_address(1);
-    void *_sp = _sp_reg_copy;
-    NSLog(@"sp: %p", _sp);
+    NSLog(@"sp: %p", sp);
     uint8_t *tb = NULL;
     uint8_t *te = NULL;
-    bool gotTraceBuf = getJevTraceBuf(_sp, &tb, &te);
-    NSLog(@"sp: %p gotTraceBuf: %@ tb: %p te: %p", _sp, YESNO(gotTraceBuf), tb, te);
-
-    NSLog(@"%s end", __PRETTY_FUNCTION__);
+    bool gotTraceBuf = getJevTraceBuf(sp, &tb, &te);
+    NSLog(@"gotTraceBuf: %@ tb: %p te: %p", YESNO(gotTraceBuf), tb, te);
 }
-
-
 
 @protocol DummyProtocol
 @end
 
 void dumpXPCObject(xpc_object_t dict) {
-//    doBP = NO;
+    //    doBP = NO;
     int res = -1;
     NSInvocation *invoc;
     __autoreleasing id args[32] = {nil};
@@ -108,29 +104,46 @@ void dumpXPCObject(xpc_object_t dict) {
     size_t root_len = xpc_data_get_length(root);
     NSLog(@"root_buf: %p root_len: %zu", root_buf, root_len);
 
-    NSXPCInterface *interface = [NSXPCInterface interfaceWithProtocol:@protocol(DummyProtocol)];
+    NSXPCInterface *interface =
+        [NSXPCInterface interfaceWithProtocol:@protocol(DummyProtocol)];
 
     NSXPCDecoder *decoder = [[CHClass(NSXPCDecoder) alloc] init];
-    res = [decoder __decodeXPCObject:dict allowingSimpleMessageSend:YES outInvocation:&invoc outArguments:args outArgumentsMaxCount:32 outMethodSignature:&sig outSelector:&sel isReply:NO replySelector:nil interface:interface];
-    NSLog(@"res: %d invoc: %@ args[0]: %@ args[1]: %@ args[2]: %@ args[3]: %@ sig: %@ sel: %@", res, invoc, args[0], args[1], args[2], args[3], sig, NSStringFromSelector(sel));
+    res = [decoder __decodeXPCObject:dict
+           allowingSimpleMessageSend:YES
+                       outInvocation:&invoc
+                        outArguments:args
+                outArgumentsMaxCount:32
+                  outMethodSignature:&sig
+                         outSelector:&sel
+                             isReply:NO
+                       replySelector:nil
+                           interface:interface];
+    NSLog(@"res: %d invoc: %@ args[0]: %@ args[1]: %@ args[2]: %@ args[3]: %@ "
+          @"sig: %@ sel: %@",
+          res, invoc, args[0], args[1], args[2], args[3], sig,
+          NSStringFromSelector(sel));
 }
 
 @implementation ViewController
 
 - (void)xpcTest {
-    NSXPCConnection *xpcConn = [[NSXPCConnection alloc] initWithServiceName:@"vin.je.jevxpctrace-test-service"];
-    xpcConn.remoteObjectInterface = [NSXPCInterface interfaceWithProtocol:@protocol(jevxpctrace_test_serviceProtocol)];
+    NSXPCConnection *xpcConn = [[NSXPCConnection alloc]
+        initWithServiceName:@"vin.je.jevxpctrace-test-service"];
+    xpcConn.remoteObjectInterface = [NSXPCInterface
+        interfaceWithProtocol:@protocol(jevxpctrace_test_serviceProtocol)];
     [xpcConn resume];
 
     id proxy = xpcConn.remoteObjectProxy;
 
     doBP = YES;
-    [proxy upperCaseString:@"hello" withReply:^(NSString *aString) {
-        // We have received a response. Update our text field, but do it on the main thread.
-        NSLog(@"Result string was: %@", aString);
-        putCallstackOnStack();
-        [xpcConn invalidate];
-    }];
+    [proxy upperCaseString:@"hello"
+                 withReply:^(NSString *aString) {
+                   // We have received a response. Update our text field, but do
+                   // it on the main thread.
+                   NSLog(@"Result string was: %@", aString);
+                   putCallstackOnStack();
+                   [xpcConn invalidate];
+                 }];
     doBP = NO;
 }
 
@@ -140,12 +153,10 @@ void dumpXPCObject(xpc_object_t dict) {
     [self xpcTest];
 }
 
-
 - (void)setRepresentedObject:(id)representedObject {
     [super setRepresentedObject:representedObject];
 
     // Update the view, if already loaded.
 }
-
 
 @end
