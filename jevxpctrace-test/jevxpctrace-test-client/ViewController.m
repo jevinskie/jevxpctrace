@@ -5,11 +5,17 @@
 //  Created by Jevin Sweval on 11/12/21.
 //
 
+#define __ASSERT_MACROS_DEFINE_VERSIONS_WITHOUT_UNDERSCORES 1
+
 #import "ViewController.h"
+
+#include <AssertMacros.h>
 
 #import <jevxpctrace-test-service/jevxpctrace_test_serviceProtocol.h>
 
 #include <CaptainHook.h>
+
+#define YESNO(x) ((x) ? @"YES" : @"NO")
 
 BOOL doBP;
 
@@ -22,6 +28,64 @@ CHDeclareClass(NSXPCDecoder);
 CHConstructor {
     CHLoadLateClass(NSXPCDecoder);
 }
+
+#define JEVTRACE_CS_HEADER 0x0d7029bau
+#define JEVTRACE_CS_FOOTER 0x2845443e
+
+bool getJevTraceBuf(void *sp, uint8_t **begin, uint8_t **end) {
+    bool isGood = false;
+
+    __Require_Action(begin, finish, isGood = false);
+    uint32_t *p = (uint32_t *)sp;
+    while (*p != JEVTRACE_CS_HEADER) {
+        ++p;
+    }
+    *begin = (uint8_t *)p;
+
+    __Require_Action(end, finish, isGood = false);
+    while (*p != JEVTRACE_CS_FOOTER) {
+        ++p;
+    }
+    *end = (uint8_t *)(p + 1);
+
+    isGood = true;
+
+finish:
+    return isGood;
+}
+
+void putCallstackOnStack(void) {
+    NSLog(@"%s begin", __PRETTY_FUNCTION__);
+
+//    uint8_t buf[16*1024*8];
+    uint8_t buf[32];
+    memset(buf, 0, sizeof(buf));
+
+    uint32_t *header_p = (uint32_t *)buf;
+    uint32_t *footer_p = (uint32_t *)(buf + sizeof(buf) - sizeof(uint32_t));
+    *header_p = JEVTRACE_CS_HEADER;
+    *footer_p = JEVTRACE_CS_FOOTER;
+
+
+    void *_sp_reg_copy = NULL;
+
+    __asm __volatile (
+                      "mov %[_sp_reg_copy_], sp \n\t"
+        : [_sp_reg_copy_] "=r" (_sp_reg_copy)                                     /* outputs */
+    );
+
+
+//    void *_sp = __builtin_frame_address(1);
+    void *_sp = _sp_reg_copy;
+    NSLog(@"sp: %p", _sp);
+    uint8_t *tb = NULL;
+    uint8_t *te = NULL;
+    bool gotTraceBuf = getJevTraceBuf(_sp, &tb, &te);
+    NSLog(@"sp: %p gotTraceBuf: %@ tb: %p te: %p", _sp, YESNO(gotTraceBuf), tb, te);
+
+    NSLog(@"%s end", __PRETTY_FUNCTION__);
+}
+
 
 
 @protocol DummyProtocol
@@ -64,6 +128,7 @@ void dumpXPCObject(xpc_object_t dict) {
     [proxy upperCaseString:@"hello" withReply:^(NSString *aString) {
         // We have received a response. Update our text field, but do it on the main thread.
         NSLog(@"Result string was: %@", aString);
+        putCallstackOnStack();
         [xpcConn invalidate];
     }];
     doBP = NO;
