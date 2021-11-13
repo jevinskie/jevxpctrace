@@ -13,7 +13,8 @@
 
 @implementation ServiceDelegate
 
-- (BOOL)listener:(NSXPCListener *)listener shouldAcceptNewConnection:(NSXPCConnection *)newConnection {
+- (BOOL)listener:(NSXPCListener*)listener shouldAcceptNewConnection:(NSXPCConnection*)newConnection
+{
     // This method is where the NSXPCListener configures, accepts, and resumes a
     // new incoming NSXPCConnection.
 
@@ -25,7 +26,7 @@
     // Next, set the object that the connection exports. All messages sent on
     // the connection to this service will be sent to the exported object to
     // handle. The connection retains the exported object.
-    jevxpctrace_test_service *exportedObject = [jevxpctrace_test_service new];
+    jevxpctrace_test_service* exportedObject = [jevxpctrace_test_service new];
     newConnection.exportedObject = exportedObject;
 
     // Resuming the connection allows the system to deliver more incoming
@@ -40,13 +41,14 @@
 
 @end
 
-int main(int argc, const char *argv[]) {
+int main(int argc, const char* argv[])
+{
     // Create the delegate for the service.
-    ServiceDelegate *delegate = [ServiceDelegate new];
+    ServiceDelegate* delegate = [ServiceDelegate new];
 
     // Set up the one NSXPCListener for this service. It will handle all
     // incoming connections.
-    NSXPCListener *listener = [NSXPCListener serviceListener];
+    NSXPCListener* listener = [NSXPCListener serviceListener];
     listener.delegate = delegate;
 
     // Resuming the serviceListener starts this service. This method does not
