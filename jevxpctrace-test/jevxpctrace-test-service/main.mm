@@ -73,7 +73,9 @@ void installHook(void)
 
 int main(int argc, const char* argv[])
 {
-    installHook();
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        installHook();
+    });
 
     // Create the delegate for the service.
     ServiceDelegate* delegate = [ServiceDelegate new];
