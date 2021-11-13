@@ -14,6 +14,7 @@
 #include <CaptainHook.h>
 #include <CoreSymbolication.h>
 #include <execinfo.h>
+#include <frida-gum.h>
 
 #define YESNO(x) ((x) ? @"YES" : @"NO")
 
@@ -81,11 +82,10 @@ void putCallstackOnStack(void)
         //        CSSymbolRef sym = CSSourceInfoGetSymbol(info);
         CSRange rng = CSSymbolGetRange(sym);
         const char* sym_name = CSSymbolGetName(sym);
-        ptrdiff_t off = ret_addr - (uintptr_t)rng.location;
+        uintptr_t off = ret_addr - (uintptr_t)rng.location;
 
         NSDictionary* entry = @{
-            @"aret" : @(ret_addr),
-            @"afun" : @(rng.location),
+            @"addr" : @(rng.location),
             @"name" : @(sym_name),
             @"off" : @(off),
             @"mod" : @(mod_name)
@@ -132,6 +132,7 @@ void putCallstackOnStack(void)
         uint32_t* found_header_p = (uint32_t*)tb;
         uint32_t* found_size_p = found_header_p + 1;
         uint8_t* found_buf_p = (uint8_t*)(found_size_p + 1);
+        NSLog(@"founBt length: %u", *found_size_p);
         NSData* foundBuf = [NSData dataWithBytes:found_buf_p length:*found_size_p];
         NSDictionary* foundBt = [NSPropertyListSerialization propertyListWithData:foundBuf
                                                                           options:NSPropertyListImmutable
