@@ -9,13 +9,11 @@
 
 #import "ViewController.h"
 
-
 #import <jevxpctrace-test-service/jevxpctrace_test_serviceProtocol.h>
 
 #include <CaptainHook.h>
 #include <CoreSymbolication.h>
 #include <execinfo.h>
-
 
 #define YESNO(x) ((x) ? @"YES" : @"NO")
 
@@ -41,7 +39,8 @@ CHConstructor { CHLoadLateClass(NSXPCDecoder); }
 #define JEVTRACE_CS_HEADER 0x0d7029bau
 #define JEVTRACE_CS_FOOTER 0x2845443e
 
-bool getJevTraceBuf(void *sp, uint8_t **begin, uint8_t **end) {
+__attribute__((no_sanitize("address"))) bool
+getJevTraceBuf(void *sp, uint8_t **begin, uint8_t **end) {
     bool isGood = false;
 
     __Require_Action(begin, finish, isGood = false);
@@ -65,32 +64,58 @@ finish:
 
 void putCallstackOnStack(void) {
     void *bt_buf[128] = {NULL};
-    int num_frames = backtrace(bt_buf, sizeof(bt_buf) / sizeof(void*));
+    int num_frames = backtrace(bt_buf, sizeof(bt_buf) / sizeof(void *));
     assert(num_frames > 0);
 
     CSSymbolicatorRef cs = CSSymbolicatorCreateWithTask(mach_task_self());
     assert(!CSIsNull(cs));
 
+    NSMutableArray<NSDictionary *> *bt = [NSMutableArray arrayWithCapacity:128];
+
     for (int ret_addr_idx = 0; ret_addr_idx < num_frames; ++ret_addr_idx) {
-        void *ret_addr = bt_buf[ret_addr_idx];
-        CSSymbolRef sym = CSSymbolicatorGetSymbolWithAddressAtTime(cs, (vm_address_t)ret_addr, kCSNow);
-//        CSSymbolRef sym = CSSourceInfoGetSymbol(info);
+        uintptr_t ret_addr = (uintptr_t)bt_buf[ret_addr_idx];
+        CSSymbolRef sym = CSSymbolicatorGetSymbolWithAddressAtTime(
+            cs, (vm_address_t)ret_addr, kCSNow);
+        CSSymbolOwnerRef sym_owner = CSSymbolGetSymbolOwner(sym);
+        const char *mod_name = CSSymbolOwnerGetName(sym_owner);
+        //        CSSymbolRef sym = CSSourceInfoGetSymbol(info);
         CSRange rng = CSSymbolGetRange(sym);
         const char *sym_name = CSSymbolGetName(sym);
-        ptrdiff_t off = (uintptr_t)ret_addr - (uintptr_t)rng.location;
+        ptrdiff_t off = ret_addr - (uintptr_t)rng.location;
 
+        NSDictionary *entry = @{
+            @"aret" : @(ret_addr),
+            @"afun" : @(rng.location),
+            @"name" : @(sym_name),
+            @"off" : @(off),
+            @"mod" : @(mod_name)
+        };
+        bt[ret_addr_idx] = entry;
 
-        NSLog(@"symbol: %s %p off: 0x%tx", sym_name, (const void *)rng.location, off);
-//        gDyld_addr = rng.location;
+        //        NSLog(@"symbol: %s %p off: 0x%tx", sym_name, (const void
+        //        *)rng.location, off);
     }
+    //    NSLog(@"bt: %@", bt);
 
-    //    uint8_t buf[16*1024*8];
-    uint8_t buf[32];
+    NSError *error = nil;
+    NSData *btBPlist = [NSPropertyListSerialization
+        dataWithPropertyList:bt
+                      format:NSPropertyListBinaryFormat_v1_0
+                     options:NSPropertyListImmutable
+                       error:&error];
+    assert(!error);
+    uint8_t buf[16 * 1024 * 8];
+    //    uint8_t buf[32];
     memset(buf, 0, sizeof(buf));
 
     uint32_t *header_p = (uint32_t *)buf;
+    uint32_t *size_p = header_p + 1;
+    uint8_t *buf_p = (uint8_t *)(size_p + 1);
     uint32_t *footer_p = (uint32_t *)(buf + sizeof(buf) - sizeof(uint32_t));
     *header_p = JEVTRACE_CS_HEADER;
+    *size_p = (uint32_t)btBPlist.length;
+    //    assert(btBPlist.length < sizeof(buf) - 3*sizeof(uint32_t));
+    memcpy(buf_p, btBPlist.bytes, btBPlist.length);
     *footer_p = JEVTRACE_CS_FOOTER;
 
     void *sp = NULL;
@@ -104,6 +129,20 @@ void putCallstackOnStack(void) {
     uint8_t *te = NULL;
     bool gotTraceBuf = getJevTraceBuf(sp, &tb, &te);
     NSLog(@"gotTraceBuf: %@ tb: %p te: %p", YESNO(gotTraceBuf), tb, te);
+    if (gotTraceBuf) {
+        uint32_t *found_header_p = (uint32_t *)tb;
+        uint32_t *found_size_p = found_header_p + 1;
+        uint8_t *found_buf_p = (uint8_t *)(found_size_p + 1);
+        NSData *foundBuf = [NSData dataWithBytes:found_buf_p
+                                          length:*found_size_p];
+        NSDictionary *foundBt = [NSPropertyListSerialization
+            propertyListWithData:foundBuf
+                         options:NSPropertyListImmutable
+                          format:nil
+                           error:&error];
+        assert(!error);
+        NSLog(@"foundBt: %@", foundBt);
+    }
 }
 
 @protocol DummyProtocol
