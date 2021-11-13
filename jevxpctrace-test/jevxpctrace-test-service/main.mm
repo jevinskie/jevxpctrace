@@ -8,6 +8,8 @@
 #import "jevxpctrace_test_service.h"
 #import <Foundation/Foundation.h>
 
+#include <fridacpp.h>
+
 @interface ServiceDelegate : NSObject <NSXPCListenerDelegate>
 @end
 
@@ -41,8 +43,38 @@
 
 @end
 
+class _xpc_connection_call_event_handler_hook_t : public InvocationListener {
+
+public:
+    void on_enter(GumInvocationContext* context) override
+    {
+        xpc_object_t event = (__bridge xpc_object_t)gum_invocation_context_get_nth_argument(context, 1);
+        size_t hash = event ? xpc_hash(event) : 0;
+        NSLog(@"%s %@ hash: 0x%016zx", __PRETTY_FUNCTION__, event, hash);
+    }
+    void on_leave(GumInvocationContext* context) override
+    {
+        //        NSLog(@"%s", __func__);
+    }
+};
+
+_xpc_connection_call_event_handler_hook_t* _xpc_connection_call_event_handler_hook;
+
+Intercepter* interceptor;
+
+void installHook(void)
+{
+    interceptor = new Intercepter();
+    _xpc_connection_call_event_handler_hook = new _xpc_connection_call_event_handler_hook_t();
+    gpointer _xpc_connection_call_event_handler_fptr
+        = GSIZE_TO_POINTER(gum_module_find_symbol_by_name("libxpc.dylib", "_xpc_connection_call_event_handler"));
+    interceptor->attach(_xpc_connection_call_event_handler_fptr, _xpc_connection_call_event_handler_hook, nullptr);
+}
+
 int main(int argc, const char* argv[])
 {
+    installHook();
+
     // Create the delegate for the service.
     ServiceDelegate* delegate = [ServiceDelegate new];
 

@@ -14,6 +14,7 @@
 - (void)upperCaseString:(NSString*)aString withReply:(void (^)(NSString*))reply
 {
     NSString* response = [aString uppercaseString];
+    NSLog(@"request: %@ response: %@", aString, response);
     reply(response);
 }
 

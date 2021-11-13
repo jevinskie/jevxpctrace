@@ -17,7 +17,6 @@
 #include <fridacpp.h>
 #include <xpc/xpc.h>
 
-
 #define YESNO(x) ((x) ? @"YES" : @"NO")
 
 BOOL doBP;
@@ -197,11 +196,11 @@ public:
     {
         xpc_object_t msg = (__bridge xpc_object_t)gum_invocation_context_get_nth_argument(context, 1);
         size_t hash = msg ? xpc_hash(msg) : 0;
-        NSLog(@"%s %@ hash: 0x%016zx", __func__, msg, hash);
+        NSLog(@"%s %@ hash: 0x%016zx", __PRETTY_FUNCTION__, msg, hash);
     }
     void on_leave(GumInvocationContext* context) override
     {
-        NSLog(@"%s", __func__);
+        //        NSLog(@"%s", __func__);
     }
 };
 

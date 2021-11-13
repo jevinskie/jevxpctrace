@@ -10,8 +10,9 @@
 		0915AC5B273FB06B00D24554 /* fridacpp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0915AC5A273FB06B00D24554 /* fridacpp.cpp */; };
 		0915AC5D273FB1FB00D24554 /* libfrida-gum.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 09FB9DA7273F827C00D65871 /* libfrida-gum.a */; };
 		0915AC5E273FB20900D24554 /* libfrida-gum.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 09FB9DA7273F827C00D65871 /* libfrida-gum.a */; };
+		0915AC61273FBB5300D24554 /* fridacpp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0915AC5A273FB06B00D24554 /* fridacpp.cpp */; };
 		09FB9D5E273EE62100D65871 /* jevxpctrace_test_service.m in Sources */ = {isa = PBXBuildFile; fileRef = 09FB9D5D273EE62100D65871 /* jevxpctrace_test_service.m */; };
-		09FB9D60273EE62100D65871 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 09FB9D5F273EE62100D65871 /* main.m */; };
+		09FB9D60273EE62100D65871 /* main.mm in Sources */ = {isa = PBXBuildFile; fileRef = 09FB9D5F273EE62100D65871 /* main.mm */; };
 		09FB9D84273EE86300D65871 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 09FB9D83273EE86300D65871 /* AppDelegate.m */; };
 		09FB9D87273EE86300D65871 /* ViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 09FB9D86273EE86300D65871 /* ViewController.mm */; };
 		09FB9D89273EE86300D65871 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 09FB9D88273EE86300D65871 /* Assets.xcassets */; };
@@ -87,7 +88,7 @@
 		09FB9D5B273EE62100D65871 /* jevxpctrace_test_serviceProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = jevxpctrace_test_serviceProtocol.h; sourceTree = "<group>"; };
 		09FB9D5C273EE62100D65871 /* jevxpctrace_test_service.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = jevxpctrace_test_service.h; sourceTree = "<group>"; };
 		09FB9D5D273EE62100D65871 /* jevxpctrace_test_service.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = jevxpctrace_test_service.m; sourceTree = "<group>"; };
-		09FB9D5F273EE62100D65871 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		09FB9D5F273EE62100D65871 /* main.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = main.mm; sourceTree = "<group>"; };
 		09FB9D61273EE62100D65871 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		09FB9D80273EE86300D65871 /* jevxpctrace-test-client.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "jevxpctrace-test-client.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		09FB9D82273EE86300D65871 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -160,7 +161,7 @@
 				09FB9D5B273EE62100D65871 /* jevxpctrace_test_serviceProtocol.h */,
 				09FB9D5C273EE62100D65871 /* jevxpctrace_test_service.h */,
 				09FB9D5D273EE62100D65871 /* jevxpctrace_test_service.m */,
-				09FB9D5F273EE62100D65871 /* main.m */,
+				09FB9D5F273EE62100D65871 /* main.mm */,
 				09FB9D61273EE62100D65871 /* Info.plist */,
 			);
 			path = "jevxpctrace-test-service";
@@ -294,7 +295,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				09FB9D60273EE62100D65871 /* main.m in Sources */,
+				0915AC61273FBB5300D24554 /* fridacpp.cpp in Sources */,
+				09FB9D60273EE62100D65871 /* main.mm in Sources */,
 				09FB9D5E273EE62100D65871 /* jevxpctrace_test_service.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
