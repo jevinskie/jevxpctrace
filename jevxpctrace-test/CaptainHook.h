@@ -968,7 +968,10 @@ __attribute__((unused)) CHInline static void* CHIvar_(id object, const char* nam
     {                                                                                                                  \
         return CHPropertyGetValue(class, getter);                                                                      \
     }                                                                                                                  \
-    CHPropertySetter(class, setter, type, getter) { CHPropertySetValue(class, getter, getter, policy); }
+    CHPropertySetter(class, setter, type, getter)                                                                      \
+    {                                                                                                                  \
+        CHPropertySetValue(class, getter, getter, policy);                                                             \
+    }
 #define CHPropertyRetain(class, type, getter, setter) CHProperty(class, type, getter, setter, OBJC_ASSOCIATION_RETAIN)
 #define CHPropertyRetainNonatomic(class, type, getter, setter)                                                         \
     CHProperty(class, type, getter, setter, OBJC_ASSOCIATION_RETAIN_NONATOMIC)
@@ -1009,7 +1012,10 @@ __attribute__((unused)) CHInline static void* CHIvar_(id object, const char* nam
 
 #ifndef CHHasARC
 // Scope Autorelease
-__attribute__((unused)) CHInline static void CHScopeReleased(id* sro) { [*sro release]; }
+__attribute__((unused)) CHInline static void CHScopeReleased(id* sro)
+{
+    [*sro release];
+}
 #define CHScopeReleased __attribute__((cleanup(CHScopeReleased)))
 
 #define CHAutoreleasePoolForScope()                                                                                    \

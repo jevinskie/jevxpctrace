@@ -2,3 +2,5 @@ BasedOnStyle: WebKit
 IndentWidth: 4
 UseTab: Never
 ColumnLimit: 120
+AllowShortBlocksOnASingleLine: Empty
+AllowShortFunctionsOnASingleLine: Empty

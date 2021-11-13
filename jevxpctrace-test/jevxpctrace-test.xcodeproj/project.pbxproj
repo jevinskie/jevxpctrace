@@ -82,6 +82,7 @@
 /* Begin PBXFileReference section */
 		0915AC5A273FB06B00D24554 /* fridacpp.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = fridacpp.cpp; path = "vendor/frida-gum-cpp/fridacpp.cpp"; sourceTree = "<group>"; };
 		0915AC5C273FB0A500D24554 /* fridacpp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = fridacpp.h; path = "vendor/frida-gum-cpp/fridacpp.h"; sourceTree = "<group>"; };
+		0915AC5F273FB68B00D24554 /* libresolv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libresolv.tbd; path = usr/lib/libresolv.tbd; sourceTree = SDKROOT; };
 		09FB9D59273EE62100D65871 /* jevxpctrace-test-service.xpc */ = {isa = PBXFileReference; explicitFileType = "wrapper.xpc-service"; includeInIndex = 0; path = "jevxpctrace-test-service.xpc"; sourceTree = BUILT_PRODUCTS_DIR; };
 		09FB9D5B273EE62100D65871 /* jevxpctrace_test_serviceProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = jevxpctrace_test_serviceProtocol.h; sourceTree = "<group>"; };
 		09FB9D5C273EE62100D65871 /* jevxpctrace_test_service.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = jevxpctrace_test_service.h; sourceTree = "<group>"; };
@@ -183,6 +184,7 @@
 		09FB9D93273EE8AC00D65871 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0915AC5F273FB68B00D24554 /* libresolv.tbd */,
 				09FB9DA7273F827C00D65871 /* libfrida-gum.a */,
 			);
 			name = Frameworks;
@@ -399,6 +401,7 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "-lresolv";
 				SDKROOT = macosx;
 			};
 			name = Debug;
@@ -460,6 +463,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				OTHER_LDFLAGS = "-lresolv";
 				SDKROOT = macosx;
 			};
 			name = Release;
@@ -538,6 +542,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MARKETING_VERSION = 1.0;
 				OTHER_LDFLAGS = (
+					"$(inherited)",
 					"-F",
 					"$(PROJECT_DIR)/privroot/System/Library/PrivateFrameworks",
 					"-framework",
@@ -571,6 +576,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MARKETING_VERSION = 1.0;
 				OTHER_LDFLAGS = (
+					"$(inherited)",
 					"-F",
 					"$(PROJECT_DIR)/privroot/System/Library/PrivateFrameworks",
 					"-framework",
