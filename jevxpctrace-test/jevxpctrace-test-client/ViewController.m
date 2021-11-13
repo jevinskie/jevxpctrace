@@ -5,15 +5,17 @@
 //  Created by Jevin Sweval on 11/12/21.
 //
 
-#define __ASSERT_MACROS_DEFINE_VERSIONS_WITHOUT_UNDERSCORES 1
+#include <AssertMacros.h>
 
 #import "ViewController.h"
 
-#include <AssertMacros.h>
 
 #import <jevxpctrace-test-service/jevxpctrace_test_serviceProtocol.h>
 
 #include <CaptainHook.h>
+#include <CoreSymbolication.h>
+#include <execinfo.h>
+
 
 #define YESNO(x) ((x) ? @"YES" : @"NO")
 
@@ -62,6 +64,21 @@ finish:
 }
 
 void putCallstackOnStack(void) {
+    void *bt_buf[128] = {NULL};
+    int num_frames = backtrace(bt_buf, sizeof(bt_buf) / sizeof(void*));
+    assert(num_frames > 0);
+
+    CSSymbolicatorRef symbolicator = CSSymbolicatorCreateWithTask(mach_task_self());
+    assert(!CSIsNull(symbolicator));
+
+    for (int ret_addr_idx = 0; ret_addr_idx < num_frames; ++ret_addr_idx) {
+        void *ret_addr = bt_buf[ret_addr_idx];
+        CSSymbolRef sym = CSSymbolicatorGetSymbolWithAddressAtTime(symbolicator, (vm_address_t)ret_addr, kCSNow);
+        NSLog(@"symbol: %@", CSSymbolCopyDescriptionWithIndent(sym, 0));
+//        CSRange rng = CSSymbolGetRange(sym);
+//        gDyld_addr = rng.location;
+    }
+
     //    uint8_t buf[16*1024*8];
     uint8_t buf[32];
     memset(buf, 0, sizeof(buf));
