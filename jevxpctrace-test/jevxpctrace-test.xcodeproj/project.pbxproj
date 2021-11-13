@@ -15,6 +15,12 @@
 		09FB9D8C273EE86300D65871 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09FB9D8A273EE86300D65871 /* Main.storyboard */; };
 		09FB9D8E273EE86300D65871 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 09FB9D8D273EE86300D65871 /* main.m */; };
 		09FB9D94273EE8AC00D65871 /* jevxpctrace-test-service.xpc in Embed XPC Services */ = {isa = PBXBuildFile; fileRef = 09FB9D59273EE62100D65871 /* jevxpctrace-test-service.xpc */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		09FB9DAD273F833600D65871 /* FridaGadget.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 09FB9DAB273F833600D65871 /* FridaGadget.dylib */; };
+		09FB9DAE273F833600D65871 /* FridaGadget.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 09FB9DAB273F833600D65871 /* FridaGadget.dylib */; };
+		09FB9DB1273F834000D65871 /* FridaGadget.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = 09FB9DAB273F833600D65871 /* FridaGadget.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		09FB9DB2273F834F00D65871 /* FridaGadget.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = 09FB9DAB273F833600D65871 /* FridaGadget.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		09FB9DBD273F98C200D65871 /* FridaGadget.config in Resources */ = {isa = PBXBuildFile; fileRef = 09FB9DAC273F833600D65871 /* FridaGadget.config */; };
+		09FB9DBE273F98D200D65871 /* FridaGadget.config in Resources */ = {isa = PBXBuildFile; fileRef = 09FB9DAC273F833600D65871 /* FridaGadget.config */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,6 +45,28 @@
 			name = "Embed XPC Services";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		09FB9DA6273F824900D65871 /* Embed Libraries */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				09FB9DB1273F834000D65871 /* FridaGadget.dylib in Embed Libraries */,
+			);
+			name = "Embed Libraries";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		09FB9DB3273F834F00D65871 /* Embed Libraries */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				09FB9DB2273F834F00D65871 /* FridaGadget.dylib in Embed Libraries */,
+			);
+			name = "Embed Libraries";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
@@ -59,6 +87,10 @@
 		09FB9D8F273EE86300D65871 /* jevxpctrace_test_client.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = jevxpctrace_test_client.entitlements; sourceTree = "<group>"; };
 		09FB9D98273F04A000D65871 /* CaptainHook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaptainHook.h; sourceTree = "<group>"; };
 		09FB9D9D273F486900D65871 /* CoreSymbolication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreSymbolication.h; sourceTree = "<group>"; };
+		09FB9DA2273F823D00D65871 /* frida-gum-macos-arm64 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "frida-gum-macos-arm64"; sourceTree = "<group>"; };
+		09FB9DA7273F827C00D65871 /* libfrida-gum.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libfrida-gum.a"; path = "frida-gum-macos-arm64/libfrida-gum.a"; sourceTree = "<group>"; };
+		09FB9DAB273F833600D65871 /* FridaGadget.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = FridaGadget.dylib; sourceTree = "<group>"; };
+		09FB9DAC273F833600D65871 /* FridaGadget.config */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = FridaGadget.config; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +98,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				09FB9DAE273F833600D65871 /* FridaGadget.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -73,6 +106,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				09FB9DAD273F833600D65871 /* FridaGadget.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -82,6 +116,9 @@
 		09FB9D37273EE56700D65871 = {
 			isa = PBXGroup;
 			children = (
+				09FB9DAC273F833600D65871 /* FridaGadget.config */,
+				09FB9DAB273F833600D65871 /* FridaGadget.dylib */,
+				09FB9DA2273F823D00D65871 /* frida-gum-macos-arm64 */,
 				09FB9D9D273F486900D65871 /* CoreSymbolication.h */,
 				09FB9D98273F04A000D65871 /* CaptainHook.h */,
 				09FB9D81273EE86300D65871 /* jevxpctrace-test-client */,
@@ -130,6 +167,7 @@
 		09FB9D93273EE8AC00D65871 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				09FB9DA7273F827C00D65871 /* libfrida-gum.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -144,6 +182,7 @@
 				09FB9D55273EE62100D65871 /* Sources */,
 				09FB9D56273EE62100D65871 /* Frameworks */,
 				09FB9D57273EE62100D65871 /* Resources */,
+				09FB9DB3273F834F00D65871 /* Embed Libraries */,
 			);
 			buildRules = (
 			);
@@ -162,6 +201,7 @@
 				09FB9D7D273EE86300D65871 /* Frameworks */,
 				09FB9D7E273EE86300D65871 /* Resources */,
 				09FB9D97273EE8AC00D65871 /* Embed XPC Services */,
+				09FB9DA6273F824900D65871 /* Embed Libraries */,
 			);
 			buildRules = (
 			);
@@ -214,6 +254,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				09FB9DBE273F98D200D65871 /* FridaGadget.config in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -221,6 +262,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				09FB9DBD273F98C200D65871 /* FridaGadget.config in Resources */,
 				09FB9D89273EE86300D65871 /* Assets.xcassets in Resources */,
 				09FB9D8C273EE86300D65871 /* Main.storyboard in Resources */,
 			);
@@ -393,6 +435,11 @@
 				INFOPLIST_FILE = "jevxpctrace-test-service/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "jevxpctrace-test-service";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/frida-gum-macos-arm64",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "vin.je.jevxpctrace-test-service";
@@ -414,6 +461,11 @@
 				INFOPLIST_FILE = "jevxpctrace-test-service/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "jevxpctrace-test-service";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/frida-gum-macos-arm64",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "vin.je.jevxpctrace-test-service";
@@ -442,6 +494,11 @@
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/frida-gum-macos-arm64",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MARKETING_VERSION = 1.0;
@@ -476,6 +533,11 @@
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/frida-gum-macos-arm64",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MARKETING_VERSION = 1.0;
