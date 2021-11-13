@@ -37,10 +37,9 @@ CHDeclareClass(NSXPCDecoder);
 CHConstructor { CHLoadLateClass(NSXPCDecoder); }
 
 #define JEVTRACE_CS_HEADER 0x0d7029bau
-#define JEVTRACE_CS_FOOTER 0x2845443e
+#define JEVTRACE_CS_FOOTER 0x2845443eu
 
-__attribute__((no_sanitize("address"))) bool
-getJevTraceBuf(void *sp, uint8_t **begin, uint8_t **end) {
+__attribute__((no_sanitize("address"))) bool getJevTraceBuf(void *sp, uint8_t **begin, uint8_t **end) {
     bool isGood = false;
 
     __Require_Action(begin, finish, isGood = false);
@@ -74,8 +73,7 @@ void putCallstackOnStack(void) {
 
     for (int ret_addr_idx = 0; ret_addr_idx < num_frames; ++ret_addr_idx) {
         uintptr_t ret_addr = (uintptr_t)bt_buf[ret_addr_idx];
-        CSSymbolRef sym = CSSymbolicatorGetSymbolWithAddressAtTime(
-            cs, (vm_address_t)ret_addr, kCSNow);
+        CSSymbolRef sym = CSSymbolicatorGetSymbolWithAddressAtTime(cs, (vm_address_t)ret_addr, kCSNow);
         CSSymbolOwnerRef sym_owner = CSSymbolGetSymbolOwner(sym);
         const char *mod_name = CSSymbolOwnerGetName(sym_owner);
         //        CSSymbolRef sym = CSSourceInfoGetSymbol(info);
@@ -98,11 +96,10 @@ void putCallstackOnStack(void) {
     //    NSLog(@"bt: %@", bt);
 
     NSError *error = nil;
-    NSData *btBPlist = [NSPropertyListSerialization
-        dataWithPropertyList:bt
-                      format:NSPropertyListBinaryFormat_v1_0
-                     options:NSPropertyListImmutable
-                       error:&error];
+    NSData *btBPlist = [NSPropertyListSerialization dataWithPropertyList:bt
+                                                                  format:NSPropertyListBinaryFormat_v1_0
+                                                                 options:NSPropertyListImmutable
+                                                                   error:&error];
     assert(!error);
     uint8_t buf[16 * 1024 * 8];
     //    uint8_t buf[32];
@@ -133,13 +130,11 @@ void putCallstackOnStack(void) {
         uint32_t *found_header_p = (uint32_t *)tb;
         uint32_t *found_size_p = found_header_p + 1;
         uint8_t *found_buf_p = (uint8_t *)(found_size_p + 1);
-        NSData *foundBuf = [NSData dataWithBytes:found_buf_p
-                                          length:*found_size_p];
-        NSDictionary *foundBt = [NSPropertyListSerialization
-            propertyListWithData:foundBuf
-                         options:NSPropertyListImmutable
-                          format:nil
-                           error:&error];
+        NSData *foundBuf = [NSData dataWithBytes:found_buf_p length:*found_size_p];
+        NSDictionary *foundBt = [NSPropertyListSerialization propertyListWithData:foundBuf
+                                                                          options:NSPropertyListImmutable
+                                                                           format:nil
+                                                                            error:&error];
         assert(!error);
         NSLog(@"foundBt: %@", foundBt);
     }
@@ -165,8 +160,7 @@ void dumpXPCObject(xpc_object_t dict) {
     size_t root_len = xpc_data_get_length(root);
     NSLog(@"root_buf: %p root_len: %zu", root_buf, root_len);
 
-    NSXPCInterface *interface =
-        [NSXPCInterface interfaceWithProtocol:@protocol(DummyProtocol)];
+    NSXPCInterface *interface = [NSXPCInterface interfaceWithProtocol:@protocol(DummyProtocol)];
 
     NSXPCDecoder *decoder = [[CHClass(NSXPCDecoder) alloc] init];
     res = [decoder __decodeXPCObject:dict
@@ -181,17 +175,14 @@ void dumpXPCObject(xpc_object_t dict) {
                            interface:interface];
     NSLog(@"res: %d invoc: %@ args[0]: %@ args[1]: %@ args[2]: %@ args[3]: %@ "
           @"sig: %@ sel: %@",
-          res, invoc, args[0], args[1], args[2], args[3], sig,
-          NSStringFromSelector(sel));
+          res, invoc, args[0], args[1], args[2], args[3], sig, NSStringFromSelector(sel));
 }
 
 @implementation ViewController
 
 - (void)xpcTest {
-    NSXPCConnection *xpcConn = [[NSXPCConnection alloc]
-        initWithServiceName:@"vin.je.jevxpctrace-test-service"];
-    xpcConn.remoteObjectInterface = [NSXPCInterface
-        interfaceWithProtocol:@protocol(jevxpctrace_test_serviceProtocol)];
+    NSXPCConnection *xpcConn = [[NSXPCConnection alloc] initWithServiceName:@"vin.je.jevxpctrace-test-service"];
+    xpcConn.remoteObjectInterface = [NSXPCInterface interfaceWithProtocol:@protocol(jevxpctrace_test_serviceProtocol)];
     [xpcConn resume];
 
     id proxy = xpcConn.remoteObjectProxy;
