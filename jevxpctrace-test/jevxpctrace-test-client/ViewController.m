@@ -44,6 +44,7 @@ __attribute__((no_sanitize("address"))) bool getJevTraceBuf(void* sp, uint8_t** 
 {
     bool isGood = false;
 
+    __Require_Action(sp, finish, isGood = false);
     __Require_Action(begin, finish, isGood = false);
     uint32_t* p = (uint32_t*)sp;
     while (*p != JEVTRACE_CS_HEADER) {
