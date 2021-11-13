@@ -7,10 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0915AC5B273FB06B00D24554 /* fridacpp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0915AC5A273FB06B00D24554 /* fridacpp.cpp */; };
+		0915AC5D273FB1FB00D24554 /* libfrida-gum.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 09FB9DA7273F827C00D65871 /* libfrida-gum.a */; };
+		0915AC5E273FB20900D24554 /* libfrida-gum.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 09FB9DA7273F827C00D65871 /* libfrida-gum.a */; };
 		09FB9D5E273EE62100D65871 /* jevxpctrace_test_service.m in Sources */ = {isa = PBXBuildFile; fileRef = 09FB9D5D273EE62100D65871 /* jevxpctrace_test_service.m */; };
 		09FB9D60273EE62100D65871 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 09FB9D5F273EE62100D65871 /* main.m */; };
 		09FB9D84273EE86300D65871 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 09FB9D83273EE86300D65871 /* AppDelegate.m */; };
-		09FB9D87273EE86300D65871 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09FB9D86273EE86300D65871 /* ViewController.m */; };
+		09FB9D87273EE86300D65871 /* ViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 09FB9D86273EE86300D65871 /* ViewController.mm */; };
 		09FB9D89273EE86300D65871 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 09FB9D88273EE86300D65871 /* Assets.xcassets */; };
 		09FB9D8C273EE86300D65871 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09FB9D8A273EE86300D65871 /* Main.storyboard */; };
 		09FB9D8E273EE86300D65871 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 09FB9D8D273EE86300D65871 /* main.m */; };
@@ -77,6 +80,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0915AC5A273FB06B00D24554 /* fridacpp.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = fridacpp.cpp; path = "vendor/frida-gum-cpp/fridacpp.cpp"; sourceTree = "<group>"; };
+		0915AC5C273FB0A500D24554 /* fridacpp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = fridacpp.h; path = "vendor/frida-gum-cpp/fridacpp.h"; sourceTree = "<group>"; };
 		09FB9D59273EE62100D65871 /* jevxpctrace-test-service.xpc */ = {isa = PBXFileReference; explicitFileType = "wrapper.xpc-service"; includeInIndex = 0; path = "jevxpctrace-test-service.xpc"; sourceTree = BUILT_PRODUCTS_DIR; };
 		09FB9D5B273EE62100D65871 /* jevxpctrace_test_serviceProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = jevxpctrace_test_serviceProtocol.h; sourceTree = "<group>"; };
 		09FB9D5C273EE62100D65871 /* jevxpctrace_test_service.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = jevxpctrace_test_service.h; sourceTree = "<group>"; };
@@ -87,7 +92,7 @@
 		09FB9D82273EE86300D65871 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		09FB9D83273EE86300D65871 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		09FB9D85273EE86300D65871 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		09FB9D86273EE86300D65871 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		09FB9D86273EE86300D65871 /* ViewController.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ViewController.mm; sourceTree = "<group>"; };
 		09FB9D88273EE86300D65871 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		09FB9D8B273EE86300D65871 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		09FB9D8D273EE86300D65871 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -105,6 +110,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0915AC5E273FB20900D24554 /* libfrida-gum.a in Frameworks */,
 				09FB9DAE273F833600D65871 /* FridaGadget.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -113,6 +119,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0915AC5D273FB1FB00D24554 /* libfrida-gum.a in Frameworks */,
 				09FB9DAD273F833600D65871 /* FridaGadget.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -123,6 +130,8 @@
 		09FB9D37273EE56700D65871 = {
 			isa = PBXGroup;
 			children = (
+				0915AC5C273FB0A500D24554 /* fridacpp.h */,
+				0915AC5A273FB06B00D24554 /* fridacpp.cpp */,
 				09FB9DAC273F833600D65871 /* FridaGadget.config */,
 				09FB9DAB273F833600D65871 /* FridaGadget.dylib */,
 				09FB9DA2273F823D00D65871 /* frida-gum-macos-arm64 */,
@@ -162,7 +171,7 @@
 				09FB9D82273EE86300D65871 /* AppDelegate.h */,
 				09FB9D83273EE86300D65871 /* AppDelegate.m */,
 				09FB9D85273EE86300D65871 /* ViewController.h */,
-				09FB9D86273EE86300D65871 /* ViewController.m */,
+				09FB9D86273EE86300D65871 /* ViewController.mm */,
 				09FB9D88273EE86300D65871 /* Assets.xcassets */,
 				09FB9D8A273EE86300D65871 /* Main.storyboard */,
 				09FB9D8D273EE86300D65871 /* main.m */,
@@ -292,8 +301,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				09FB9D87273EE86300D65871 /* ViewController.m in Sources */,
+				09FB9D87273EE86300D65871 /* ViewController.mm in Sources */,
 				09FB9D8E273EE86300D65871 /* main.m in Sources */,
+				0915AC5B273FB06B00D24554 /* fridacpp.cpp in Sources */,
 				09FB9D84273EE86300D65871 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -379,6 +389,7 @@
 				HEADER_SEARCH_PATHS = (
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/frida-gum-macos-arm64",
+					"$(PROJECT_DIR)/vendor/frida-gum-cpp",
 				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(PROJECT_DIR)",
@@ -440,6 +451,7 @@
 				HEADER_SEARCH_PATHS = (
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/frida-gum-macos-arm64",
+					"$(PROJECT_DIR)/vendor/frida-gum-cpp",
 				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(PROJECT_DIR)",

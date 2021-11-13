@@ -47,9 +47,12 @@
 //  - a Symbol represents a symbol e.g. function, variable
 //
 
-#if !defined(__CORESYMBOLICATION_CORESYMBOLICATION__)
-#define __CORESYMBOLICATION_CORESYMBOLICATION__ 1
-#define __CORESYMBOLICATION__ 1
+#pragma once
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 
 #include <CoreFoundation/CoreFoundation.h>
 #include <mach/mach.h>
@@ -132,12 +135,12 @@ typedef int (^CSSegmentIterator)(CSSegmentRef segment);
  */
 
 const char* kCSRegionMachHeaderName;
-const CSDictionaryKeyCallBacks kCSTypeDictionaryKeyCallBacks;
-const CSDictionaryValueCallBacks kCSTypeDictionaryValueCallBacks;
-const CSDictionaryKeyCallBacks kCSTypeDictionaryWeakKeyCallBacks;
-const CSDictionaryValueCallBacks kCSTypeDictionaryWeakValueCallBacks;
-const CSSetCallBacks kCSTypeSetCallBacks;
-const CSSetCallBacks kCSTypeSetWeakCallBacks;
+const CSDictionaryKeyCallBacks kCSTypeDictionaryKeyCallBacks = nullptr;
+const CSDictionaryValueCallBacks kCSTypeDictionaryValueCallBacks = nullptr;
+const CSDictionaryKeyCallBacks kCSTypeDictionaryWeakKeyCallBacks = nullptr;
+const CSDictionaryValueCallBacks kCSTypeDictionaryWeakValueCallBacks = nullptr;
+const CSSetCallBacks kCSTypeSetCallBacks = nullptr;
+const CSSetCallBacks kCSTypeSetWeakCallBacks = nullptr;
 
 /*
  * Architecture functions
@@ -512,4 +515,6 @@ task_is_64bit
 thread_name_for_thread_port
 */
 
-#endif /* ! __CORESYMBOLICATION_CORESYMBOLICATION__ */
+#ifdef __cplusplus
+}
+#endif

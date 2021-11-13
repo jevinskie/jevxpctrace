@@ -14,7 +14,7 @@
 #include <CaptainHook.h>
 #include <CoreSymbolication.h>
 #include <execinfo.h>
-#include <frida-gum.h>
+#include <fridacpp.h>
 
 #define YESNO(x) ((x) ? @"YES" : @"NO")
 
@@ -44,15 +44,16 @@ __attribute__((no_sanitize("address"))) bool getJevTraceBuf(void* sp, uint8_t** 
 {
     bool isGood = false;
 
-    __Require_Action(sp, finish, isGood = false);
-    __Require_Action(begin, finish, isGood = false);
+    if (!sp || !begin || !end) {
+        return false;
+    }
+
     uint32_t* p = (uint32_t*)sp;
     while (*p != JEVTRACE_CS_HEADER) {
         ++p;
     }
     *begin = (uint8_t*)p;
 
-    __Require_Action(end, finish, isGood = false);
     while (*p != JEVTRACE_CS_FOOTER) {
         ++p;
     }
