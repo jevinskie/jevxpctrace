@@ -8,11 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		0915AC5B273FB06B00D24554 /* fridacpp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0915AC5A273FB06B00D24554 /* fridacpp.cpp */; };
-		0915AC5D273FB1FB00D24554 /* libfrida-gum.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 09FB9DA7273F827C00D65871 /* libfrida-gum.a */; };
-		0915AC5E273FB20900D24554 /* libfrida-gum.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 09FB9DA7273F827C00D65871 /* libfrida-gum.a */; };
 		0915AC61273FBB5300D24554 /* fridacpp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0915AC5A273FB06B00D24554 /* fridacpp.cpp */; };
 		0915ACAD27408CBF00D24554 /* main.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0915ACAC27408CBF00D24554 /* main.mm */; };
 		0915ACB127408D1A00D24554 /* libxcselectpp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0915ACA427408C9500D24554 /* libxcselectpp.cpp */; };
+		0981EAF32740B583005E663C /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0981EAF22740B583005E663C /* AppKit.framework */; };
 		09FB9D5E273EE62100D65871 /* jevxpctrace_test_service.m in Sources */ = {isa = PBXBuildFile; fileRef = 09FB9D5D273EE62100D65871 /* jevxpctrace_test_service.m */; };
 		09FB9D60273EE62100D65871 /* main.mm in Sources */ = {isa = PBXBuildFile; fileRef = 09FB9D5F273EE62100D65871 /* main.mm */; };
 		09FB9D84273EE86300D65871 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 09FB9D83273EE86300D65871 /* AppDelegate.m */; };
@@ -101,6 +100,10 @@
 		0915ACAC27408CBF00D24554 /* main.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = main.mm; sourceTree = "<group>"; };
 		0981EAEE2740A4AD005E663C /* libdlpp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = libdlpp.h; sourceTree = "<group>"; };
 		0981EAEF2740A4AD005E663C /* libdlpp.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = libdlpp.cpp; sourceTree = "<group>"; };
+		0981EAF02740AA67005E663C /* frida-gumpp.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "frida-gumpp.xcconfig"; sourceTree = "<group>"; };
+		0981EAF12740AA76005E663C /* gen-frida-gumpp-xcconfig.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "gen-frida-gumpp-xcconfig.sh"; sourceTree = "<group>"; };
+		0981EAF22740B583005E663C /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		0981EAF42740B5A0005E663C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		09FB9D59273EE62100D65871 /* jevxpctrace-test-service.xpc */ = {isa = PBXFileReference; explicitFileType = "wrapper.xpc-service"; includeInIndex = 0; path = "jevxpctrace-test-service.xpc"; sourceTree = BUILT_PRODUCTS_DIR; };
 		09FB9D5B273EE62100D65871 /* jevxpctrace_test_serviceProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = jevxpctrace_test_serviceProtocol.h; sourceTree = "<group>"; };
 		09FB9D5C273EE62100D65871 /* jevxpctrace_test_service.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = jevxpctrace_test_service.h; sourceTree = "<group>"; };
@@ -136,7 +139,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0915AC5E273FB20900D24554 /* libfrida-gum.a in Frameworks */,
 				09FB9DAE273F833600D65871 /* FridaGadget.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -145,8 +147,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0915AC5D273FB1FB00D24554 /* libfrida-gum.a in Frameworks */,
 				09FB9DAD273F833600D65871 /* FridaGadget.dylib in Frameworks */,
+				0981EAF32740B583005E663C /* AppKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -164,6 +166,8 @@
 		09FB9D37273EE56700D65871 = {
 			isa = PBXGroup;
 			children = (
+				0981EAF12740AA76005E663C /* gen-frida-gumpp-xcconfig.sh */,
+				0981EAF02740AA67005E663C /* frida-gumpp.xcconfig */,
 				0981EAEF2740A4AD005E663C /* libdlpp.cpp */,
 				0981EAEE2740A4AD005E663C /* libdlpp.h */,
 				0915ACA427408C9500D24554 /* libxcselectpp.cpp */,
@@ -223,6 +227,8 @@
 		09FB9D93273EE8AC00D65871 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0981EAF42740B5A0005E663C /* Foundation.framework */,
+				0981EAF22740B583005E663C /* AppKit.framework */,
 				0915AC5F273FB68B00D24554 /* libresolv.tbd */,
 				09FB9DA7273F827C00D65871 /* libfrida-gum.a */,
 			);
@@ -433,13 +439,14 @@
 		};
 		09FB9D45273EE56700D65871 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0981EAF02740AA67005E663C /* frida-gumpp.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_MODULES = NO;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
@@ -496,6 +503,7 @@
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
+					"$(inherited)",
 					"-lresolv",
 					"-lxcselect",
 				);
@@ -505,13 +513,14 @@
 		};
 		09FB9D46273EE56700D65871 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0981EAF02740AA67005E663C /* frida-gumpp.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_MODULES = NO;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
@@ -561,6 +570,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				OTHER_LDFLAGS = (
+					"$(inherited)",
 					"-lresolv",
 					"-lxcselect",
 				);
