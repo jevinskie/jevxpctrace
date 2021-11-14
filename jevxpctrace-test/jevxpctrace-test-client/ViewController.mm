@@ -189,38 +189,6 @@ void dumpXPCObject(xpc_object_t dict)
         res, invoc, args[0], args[1], args[2], args[3], sig, NSStringFromSelector(sel));
 }
 
-#if 0
-
-Intercepter* interceptor;
-
-class xpc_connection_send_message_with_reply_hook_t : public InvocationListener {
-
-public:
-    void on_enter(GumInvocationContext* context) override
-    {
-        xpc_object_t msg = (__bridge xpc_object_t)gum_invocation_context_get_nth_argument(context, 1);
-        size_t hash = msg ? xpc_hash(msg) : 0;
-        NSLog(@"%s %@ hash: 0x%016zx", __PRETTY_FUNCTION__, msg, hash);
-    }
-    void on_leave(GumInvocationContext* context) override
-    {
-        //        NSLog(@"%s", __func__);
-    }
-};
-
-xpc_connection_send_message_with_reply_hook_t* xpc_connection_send_message_with_reply_hook;
-
-void installHook(void)
-{
-    interceptor = new Intercepter();
-    xpc_connection_send_message_with_reply_hook = new xpc_connection_send_message_with_reply_hook_t();
-    gpointer xpc_connection_send_message_with_reply_fptr
-        = GSIZE_TO_POINTER(gum_module_find_symbol_by_name("libxpc.dylib", "xpc_connection_send_message_with_reply"));
-    interceptor->attach(
-        xpc_connection_send_message_with_reply_fptr, xpc_connection_send_message_with_reply_hook, nullptr);
-}
-
-#else
 
 class xpc_connection_send_message_with_reply_hook_t : public Gum::InvocationListener
 {
@@ -254,7 +222,6 @@ static void installHook(void)
 //    interceptor->detach (&listener);
 }
 
-#endif
 
 @implementation ViewController
 

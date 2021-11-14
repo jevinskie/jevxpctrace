@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0915AC5B273FB06B00D24554 /* fridacpp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0915AC5A273FB06B00D24554 /* fridacpp.cpp */; };
-		0915AC61273FBB5300D24554 /* fridacpp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0915AC5A273FB06B00D24554 /* fridacpp.cpp */; };
 		0915ACAD27408CBF00D24554 /* main.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0915ACAC27408CBF00D24554 /* main.mm */; };
 		0915ACB127408D1A00D24554 /* libxcselectpp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0915ACA427408C9500D24554 /* libxcselectpp.cpp */; };
 		0981EAF32740B583005E663C /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0981EAF22740B583005E663C /* AppKit.framework */; };
@@ -91,8 +89,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		0915AC5A273FB06B00D24554 /* fridacpp.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = fridacpp.cpp; path = "vendor/frida-gum-cpp/fridacpp.cpp"; sourceTree = "<group>"; };
-		0915AC5C273FB0A500D24554 /* fridacpp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = fridacpp.h; path = "vendor/frida-gum-cpp/fridacpp.h"; sourceTree = "<group>"; };
 		0915AC5F273FB68B00D24554 /* libresolv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libresolv.tbd; path = usr/lib/libresolv.tbd; sourceTree = SDKROOT; };
 		0915ACA427408C9500D24554 /* libxcselectpp.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = libxcselectpp.cpp; sourceTree = "<group>"; };
 		0915ACA527408C9500D24554 /* libxcselectpp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = libxcselectpp.h; sourceTree = "<group>"; };
@@ -172,8 +168,6 @@
 				0981EAEE2740A4AD005E663C /* libdlpp.h */,
 				0915ACA427408C9500D24554 /* libxcselectpp.cpp */,
 				0915ACA527408C9500D24554 /* libxcselectpp.h */,
-				0915AC5C273FB0A500D24554 /* fridacpp.h */,
-				0915AC5A273FB06B00D24554 /* fridacpp.cpp */,
 				09FB9DAC273F833600D65871 /* FridaGadget.config */,
 				09FB9DAB273F833600D65871 /* FridaGadget.dylib */,
 				09FB9DA2273F823D00D65871 /* frida-gum-macos-arm64 */,
@@ -369,7 +363,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0915AC61273FBB5300D24554 /* fridacpp.cpp in Sources */,
 				09FB9D60273EE62100D65871 /* main.mm in Sources */,
 				09FB9D5E273EE62100D65871 /* jevxpctrace_test_service.m in Sources */,
 			);
@@ -381,7 +374,6 @@
 			files = (
 				09FB9D87273EE86300D65871 /* ViewController.mm in Sources */,
 				09FB9D8E273EE86300D65871 /* main.m in Sources */,
-				0915AC5B273FB06B00D24554 /* fridacpp.cpp in Sources */,
 				09FB9D84273EE86300D65871 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

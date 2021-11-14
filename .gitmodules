@@ -1,3 +1,0 @@
-[submodule "jevxpctrace-test/vendor/frida-gum-cpp"]
-	path = jevxpctrace-test/vendor/frida-gum-cpp
-	url = https://github.com/327135569/frida-gum-cpp
