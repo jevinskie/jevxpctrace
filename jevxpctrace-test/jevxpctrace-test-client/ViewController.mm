@@ -14,9 +14,9 @@
 #include <CaptainHook.h>
 #include <CoreSymbolication.h>
 #include <execinfo.h>
-#include <fridacpp.h>
 #include <xpc/xpc.h>
 
+#include <gum/gum.h>
 #include <gumpp/gumpp.hpp>
 
 #define YESNO(x) ((x) ? @"YES" : @"NO")
@@ -189,39 +189,36 @@ void dumpXPCObject(xpc_object_t dict)
         res, invoc, args[0], args[1], args[2], args[3], sig, NSStringFromSelector(sel));
 }
 
-
-class xpc_connection_send_message_with_reply_hook_t : public Gum::InvocationListener
-{
+class xpc_connection_send_message_with_reply_hook_t : public Gum::InvocationListener {
 public:
-  virtual void on_enter (Gum::InvocationContext * context)
-  {
-      xpc_object_t msg = context->get_nth_argument_bridged<xpc_object_t>(1);
-      size_t hash = msg ? xpc_hash(msg) : 0;
-      NSLog(@"%s %@ hash: 0x%016zx", __PRETTY_FUNCTION__, msg, hash);
-  }
+    virtual void on_enter(Gum::InvocationContext* context)
+    {
+        xpc_object_t msg = context->get_nth_argument_bridged<xpc_object_t>(1);
+        size_t hash = msg ? xpc_hash(msg) : 0;
+        NSLog(@"%s %@ hash: 0x%016zx", __PRETTY_FUNCTION__, msg, hash);
+    }
 
-  virtual void on_leave (Gum::InvocationContext * context)
-  {
-//      NSLog(@"%s", __PRETTY_FUNCTION__);
-  }
+    virtual void on_leave(Gum::InvocationContext* context)
+    {
+        //      NSLog(@"%s", __PRETTY_FUNCTION__);
+    }
 };
 
-static Gum::Interceptor *interceptor;
+static Gum::Interceptor* interceptor;
 
-static xpc_connection_send_message_with_reply_hook_t *xpc_connection_send_message_with_reply_hook;
+static xpc_connection_send_message_with_reply_hook_t* xpc_connection_send_message_with_reply_hook;
 
 static void installHook(void)
 {
-    interceptor = Gum::Interceptor_obtain ();
+    interceptor = Gum::Interceptor_obtain();
     xpc_connection_send_message_with_reply_hook = new xpc_connection_send_message_with_reply_hook_t;
     gpointer xpc_connection_send_message_with_reply_fptr
         = GSIZE_TO_POINTER(gum_module_find_symbol_by_name("libxpc.dylib", "xpc_connection_send_message_with_reply"));
     NSLog(@"xpc_connection_send_message_with_reply_fptr: %p", (void*)xpc_connection_send_message_with_reply_fptr);
-    interceptor->attach (reinterpret_cast<void *> (xpc_connection_send_message_with_reply_fptr),
+    interceptor->attach(reinterpret_cast<void*>(xpc_connection_send_message_with_reply_fptr),
         xpc_connection_send_message_with_reply_hook, nullptr);
-//    interceptor->detach (&listener);
+    //    interceptor->detach (&listener);
 }
-
 
 @implementation ViewController
 

@@ -117,7 +117,6 @@
 		09FB9D8F273EE86300D65871 /* jevxpctrace_test_client.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = jevxpctrace_test_client.entitlements; sourceTree = "<group>"; };
 		09FB9D98273F04A000D65871 /* CaptainHook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaptainHook.h; sourceTree = "<group>"; };
 		09FB9D9D273F486900D65871 /* CoreSymbolication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreSymbolication.h; sourceTree = "<group>"; };
-		09FB9DA2273F823D00D65871 /* frida-gum-macos-arm64 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "frida-gum-macos-arm64"; sourceTree = "<group>"; };
 		09FB9DA7273F827C00D65871 /* libfrida-gum.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libfrida-gum.a"; path = "frida-gum-macos-arm64/libfrida-gum.a"; sourceTree = "<group>"; };
 		09FB9DAB273F833600D65871 /* FridaGadget.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = FridaGadget.dylib; sourceTree = "<group>"; };
 		09FB9DAC273F833600D65871 /* FridaGadget.config */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = FridaGadget.config; sourceTree = "<group>"; };
@@ -170,7 +169,6 @@
 				0915ACA527408C9500D24554 /* libxcselectpp.h */,
 				09FB9DAC273F833600D65871 /* FridaGadget.config */,
 				09FB9DAB273F833600D65871 /* FridaGadget.dylib */,
-				09FB9DA2273F823D00D65871 /* frida-gum-macos-arm64 */,
 				09FB9D9D273F486900D65871 /* CoreSymbolication.h */,
 				09FB9D98273F04A000D65871 /* CaptainHook.h */,
 				09FB9D81273EE86300D65871 /* jevxpctrace-test-client */,

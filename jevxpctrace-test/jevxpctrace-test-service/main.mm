@@ -8,7 +8,7 @@
 #import "jevxpctrace_test_service.h"
 #import <Foundation/Foundation.h>
 
-#include <fridacpp.h>
+#include <gum/gum.h>
 #include <gumpp/gumpp.hpp>
 
 @interface ServiceDelegate : NSObject <NSXPCListenerDelegate>
@@ -44,40 +44,36 @@
 
 @end
 
-
-class _xpc_connection_call_event_handler_hook_t : public Gum::InvocationListener
-{
+class _xpc_connection_call_event_handler_hook_t : public Gum::InvocationListener {
 public:
-  virtual void on_enter (Gum::InvocationContext * context)
-  {
-      xpc_object_t event = context->get_nth_argument_bridged<xpc_object_t>(1);
-      size_t hash = event ? xpc_hash(event) : 0;
-      NSLog(@"%s %@ hash: 0x%016zx", __PRETTY_FUNCTION__, event, hash);
-  }
+    virtual void on_enter(Gum::InvocationContext* context)
+    {
+        xpc_object_t event = context->get_nth_argument_bridged<xpc_object_t>(1);
+        size_t hash = event ? xpc_hash(event) : 0;
+        NSLog(@"%s %@ hash: 0x%016zx", __PRETTY_FUNCTION__, event, hash);
+    }
 
-  virtual void on_leave (Gum::InvocationContext * context)
-  {
-//      NSLog(@"%s", __PRETTY_FUNCTION__);
-  }
+    virtual void on_leave(Gum::InvocationContext* context)
+    {
+        //      NSLog(@"%s", __PRETTY_FUNCTION__);
+    }
 };
 
-static Gum::Interceptor *interceptor;
+static Gum::Interceptor* interceptor;
 
-static _xpc_connection_call_event_handler_hook_t *_xpc_connection_call_event_handler_hook;
+static _xpc_connection_call_event_handler_hook_t* _xpc_connection_call_event_handler_hook;
 
 static void installHook(void)
 {
-    interceptor = Gum::Interceptor_obtain ();
+    interceptor = Gum::Interceptor_obtain();
     _xpc_connection_call_event_handler_hook = new _xpc_connection_call_event_handler_hook_t;
     gpointer _xpc_connection_call_event_handler_fptr
         = GSIZE_TO_POINTER(gum_module_find_symbol_by_name("libxpc.dylib", "_xpc_connection_call_event_handler"));
     NSLog(@"_xpc_connection_call_event_handler_fptr: %p", (void*)_xpc_connection_call_event_handler_fptr);
-    interceptor->attach (reinterpret_cast<void *> (_xpc_connection_call_event_handler_fptr),
-                         _xpc_connection_call_event_handler_hook, nullptr);
-//    interceptor->detach (&listener);
+    interceptor->attach(reinterpret_cast<void*>(_xpc_connection_call_event_handler_fptr),
+        _xpc_connection_call_event_handler_hook, nullptr);
+    //    interceptor->detach (&listener);
 }
-
-
 
 int main(int argc, const char* argv[])
 {
