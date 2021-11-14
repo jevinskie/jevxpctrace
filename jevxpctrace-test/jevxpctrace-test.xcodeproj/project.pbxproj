@@ -11,6 +11,8 @@
 		0915AC5D273FB1FB00D24554 /* libfrida-gum.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 09FB9DA7273F827C00D65871 /* libfrida-gum.a */; };
 		0915AC5E273FB20900D24554 /* libfrida-gum.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 09FB9DA7273F827C00D65871 /* libfrida-gum.a */; };
 		0915AC61273FBB5300D24554 /* fridacpp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0915AC5A273FB06B00D24554 /* fridacpp.cpp */; };
+		0915ACAD27408CBF00D24554 /* main.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0915ACAC27408CBF00D24554 /* main.mm */; };
+		0915ACB127408D1A00D24554 /* libxcselectpp.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0915ACA427408C9500D24554 /* libxcselectpp.mm */; };
 		09FB9D5E273EE62100D65871 /* jevxpctrace_test_service.m in Sources */ = {isa = PBXBuildFile; fileRef = 09FB9D5D273EE62100D65871 /* jevxpctrace_test_service.m */; };
 		09FB9D60273EE62100D65871 /* main.mm in Sources */ = {isa = PBXBuildFile; fileRef = 09FB9D5F273EE62100D65871 /* main.mm */; };
 		09FB9D84273EE86300D65871 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 09FB9D83273EE86300D65871 /* AppDelegate.m */; };
@@ -45,6 +47,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		0915ACA827408CBF00D24554 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
 		09FB9D97273EE8AC00D65871 /* Embed XPC Services */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -84,6 +95,10 @@
 		0915AC5A273FB06B00D24554 /* fridacpp.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = fridacpp.cpp; path = "vendor/frida-gum-cpp/fridacpp.cpp"; sourceTree = "<group>"; };
 		0915AC5C273FB0A500D24554 /* fridacpp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = fridacpp.h; path = "vendor/frida-gum-cpp/fridacpp.h"; sourceTree = "<group>"; };
 		0915AC5F273FB68B00D24554 /* libresolv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libresolv.tbd; path = usr/lib/libresolv.tbd; sourceTree = SDKROOT; };
+		0915ACA427408C9500D24554 /* libxcselectpp.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = libxcselectpp.mm; sourceTree = "<group>"; };
+		0915ACA527408C9500D24554 /* libxcselectpp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = libxcselectpp.h; sourceTree = "<group>"; };
+		0915ACAA27408CBF00D24554 /* libxcselectpp-test */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "libxcselectpp-test"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0915ACAC27408CBF00D24554 /* main.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = main.mm; sourceTree = "<group>"; };
 		09FB9D59273EE62100D65871 /* jevxpctrace-test-service.xpc */ = {isa = PBXFileReference; explicitFileType = "wrapper.xpc-service"; includeInIndex = 0; path = "jevxpctrace-test-service.xpc"; sourceTree = BUILT_PRODUCTS_DIR; };
 		09FB9D5B273EE62100D65871 /* jevxpctrace_test_serviceProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = jevxpctrace_test_serviceProtocol.h; sourceTree = "<group>"; };
 		09FB9D5C273EE62100D65871 /* jevxpctrace_test_service.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = jevxpctrace_test_service.h; sourceTree = "<group>"; };
@@ -108,6 +123,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		0915ACA727408CBF00D24554 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		09FB9D56273EE62100D65871 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -129,9 +151,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0915ACAB27408CBF00D24554 /* libxcselectpp-test */ = {
+			isa = PBXGroup;
+			children = (
+				0915ACAC27408CBF00D24554 /* main.mm */,
+			);
+			path = "libxcselectpp-test";
+			sourceTree = "<group>";
+		};
 		09FB9D37273EE56700D65871 = {
 			isa = PBXGroup;
 			children = (
+				0915ACA427408C9500D24554 /* libxcselectpp.mm */,
+				0915ACA527408C9500D24554 /* libxcselectpp.h */,
 				0915AC5C273FB0A500D24554 /* fridacpp.h */,
 				0915AC5A273FB06B00D24554 /* fridacpp.cpp */,
 				09FB9DAC273F833600D65871 /* FridaGadget.config */,
@@ -141,6 +173,7 @@
 				09FB9D98273F04A000D65871 /* CaptainHook.h */,
 				09FB9D81273EE86300D65871 /* jevxpctrace-test-client */,
 				09FB9D5A273EE62100D65871 /* jevxpctrace-test-service */,
+				0915ACAB27408CBF00D24554 /* libxcselectpp-test */,
 				09FB9D41273EE56700D65871 /* Products */,
 				09FB9D93273EE8AC00D65871 /* Frameworks */,
 			);
@@ -151,6 +184,7 @@
 			children = (
 				09FB9D59273EE62100D65871 /* jevxpctrace-test-service.xpc */,
 				09FB9D80273EE86300D65871 /* jevxpctrace-test-client.app */,
+				0915ACAA27408CBF00D24554 /* libxcselectpp-test */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -194,6 +228,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		0915ACA927408CBF00D24554 /* libxcselectpp-test */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0915ACAE27408CBF00D24554 /* Build configuration list for PBXNativeTarget "libxcselectpp-test" */;
+			buildPhases = (
+				0915ACA627408CBF00D24554 /* Sources */,
+				0915ACA727408CBF00D24554 /* Frameworks */,
+				0915ACA827408CBF00D24554 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "libxcselectpp-test";
+			productName = "libxcselectpp-test";
+			productReference = 0915ACAA27408CBF00D24554 /* libxcselectpp-test */;
+			productType = "com.apple.product-type.tool";
+		};
 		09FB9D58273EE62100D65871 /* jevxpctrace-test-service */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 09FB9D62273EE62100D65871 /* Build configuration list for PBXNativeTarget "jevxpctrace-test-service" */;
@@ -242,6 +293,9 @@
 				BuildIndependentTargetsInParallel = 1;
 				LastUpgradeCheck = 1320;
 				TargetAttributes = {
+					0915ACA927408CBF00D24554 = {
+						CreatedOnToolsVersion = 13.2;
+					};
 					09FB9D58273EE62100D65871 = {
 						CreatedOnToolsVersion = 13.2;
 					};
@@ -265,6 +319,7 @@
 			targets = (
 				09FB9D7F273EE86300D65871 /* jevxpctrace-test-client */,
 				09FB9D58273EE62100D65871 /* jevxpctrace-test-service */,
+				0915ACA927408CBF00D24554 /* libxcselectpp-test */,
 			);
 		};
 /* End PBXProject section */
@@ -291,6 +346,15 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		0915ACA627408CBF00D24554 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0915ACB127408D1A00D24554 /* libxcselectpp.mm in Sources */,
+				0915ACAD27408CBF00D24554 /* main.mm in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		09FB9D55273EE62100D65871 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -339,6 +403,30 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		0915ACAF27408CBF00D24554 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = ZK96P738ZR;
+				ENABLE_HARDENED_RUNTIME = YES;
+				MACOSX_DEPLOYMENT_TARGET = 12.1;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		0915ACB027408CBF00D24554 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = ZK96P738ZR;
+				ENABLE_HARDENED_RUNTIME = YES;
+				MACOSX_DEPLOYMENT_TARGET = 12.1;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		09FB9D45273EE56700D65871 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -403,7 +491,10 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				OTHER_LDFLAGS = "-lresolv";
+				OTHER_LDFLAGS = (
+					"-lresolv",
+					"-lxcselect",
+				);
 				SDKROOT = macosx;
 			};
 			name = Debug;
@@ -465,7 +556,10 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
-				OTHER_LDFLAGS = "-lresolv";
+				OTHER_LDFLAGS = (
+					"-lresolv",
+					"-lxcselect",
+				);
 				SDKROOT = macosx;
 			};
 			name = Release;
@@ -593,6 +687,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		0915ACAE27408CBF00D24554 /* Build configuration list for PBXNativeTarget "libxcselectpp-test" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0915ACAF27408CBF00D24554 /* Debug */,
+				0915ACB027408CBF00D24554 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		09FB9D3B273EE56700D65871 /* Build configuration list for PBXProject "jevxpctrace-test" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
