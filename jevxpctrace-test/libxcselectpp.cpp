@@ -1,6 +1,5 @@
 #include "libxcselectpp.h"
 
-#import <Foundation/Foundation.h>
 #include <limits.h>
 using namespace std::string_literals;
 
@@ -20,14 +19,6 @@ char* getDeveloperDirCString(void)
         return nullptr;
     }
     return path;
-}
-
-NSString* getDeveloperDirNSString(void)
-{
-    char* path = getDeveloperDirCString();
-    NSString* res = @(path);
-    free(path);
-    return res;
 }
 
 std::string getDeveloperDirStdString(void)

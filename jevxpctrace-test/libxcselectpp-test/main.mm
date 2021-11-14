@@ -15,7 +15,6 @@ int main(int argc, const char* argv[])
         char* dev_dir_cstr = getDeveloperDirCString();
         NSLog(@"dir cstring: %s", dev_dir_cstr);
         free(dev_dir_cstr);
-        NSLog(@"dir nsstring: %@", getDeveloperDirNSString());
         NSLog(@"dir std::string: %s", getDeveloperDirStdString().data());
     }
     return 0;
